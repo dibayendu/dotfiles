@@ -1,0 +1,63 @@
+1. map CAPS lock  -> ESC / Ctrl
+2. <C-r><C-p>{register} -> pastes indented words
+3. c -> Change4. g~ Swap case5. gu -> Make lowercase6. gU Make uppercase7. > Shift right8. < Shift left9. = Autoindent10. ! Filter {motion} lines through an external program
+11. diff between ';' and '.'
+	f+ var foo = "method("+argument1+","+argument2+")";	s␣+␣<Esc> var foo = "method(" + argument1+","+argument2+")";	; var foo = "method(" + argument1+","+argument2+")";	. var foo = "method(" + argument1 + ","+argument2+")";	;. var foo = "method(" + argument1 + "," + argument2+")";
+12. @: -> repeat the last Ex command
+13. Ctrl + W + R   - To rotate windows up/left.
+14. Ctrl + W + r   - To rotate windows down/right.
+
+15. You can use the Ctrl + W + navigation keys to change windows' position too:
+	Ctrl + W L   - Move the current window to the "far right"
+	Ctrl + W H   - Move the current window to the "far left"	
+	Ctrl-W J   - Move the current window to the "very top"
+	Ctrl + W K   - Move the current window to the "very bottom"
+16. <C-w>s -> Split the current window horizontally, reusing the current buffer in the new window
+17. <C-w>v -> Split the current window vertically, reusing the current buffer in the new window
+
+18. Moving to different buffers:
+	<C-w>w -> rotating through buffers	<C-w>h -> Focus the window to the left	<C-w>j -> Focus the window to below	<C-w>k -> Focus the window to above
+	<C-w>l -> Focus the window to right
+
+19. Resizing buffers:
+	<C-w>=		-> Equalize width and height of all windows	<C-w>_		-> Maximize height of the active window	<C-w>|		-> Maximize width of the active window	[N]<C-w>_	-> Set active window height to [N] rows
+	[N]<C-w>|	-> Set active window width to [N] columns
+
+20. deleting before the word in current position ->	daw
+
+21. :%s/foo/bar/gc	-> Change each 'foo' to 'bar', but ask for confirmation first.
+
+22. :%s/\<foo\>/bar/gc	-> Change only whole words exactly matching 'foo' to 'bar'; ask for confirmation.
+
+23. :s/target/replacement ->	& u
+
+24. :set path+=app/** -> The ** wildcard matches all subdirectories beneath the app directory -> will help in :Find command
+
+25. when one line is displayed in multiple lines
+	gj	->	Down one display line	gk 	->	Up one display line	0 	->	To first character of real line	g0 	->	To first character of display line	g^ 	->	To first nonblank character of display line	g$ 	->	To end of display line
+
+26. e	->	Forward to end of current/next word    ge 	->	Backward to end of previous word
+
+27. d/ge<CR>	->	the /ge<CR> search motion to tell the d{motion} command what to delete
+
+28. Uppercase a single character	->	~
+
+29. :%s///gn	->	count number of search matches
+
+30. *	->	command lets us search for the word under the cursor
+
+31. :vimgrep /<C-r>// **/*.txt
+
+32. Delete Matching Lines with ‘:g/re/d’
+
+33. :g/TODO/yank A
+
+34. :'<,'>sort	->	sorts the visually selected text
+
+35. Replacing visually selected text:
+	a. select the visual block -> *
+	b. :%s//<new_text>/g	->	change globally
+	   :s//<new_text>/g	->	change first selected
+
+36. Search and replace within the visually selected text:
+	:%s/\%VSEARCH/REPLACE/g
