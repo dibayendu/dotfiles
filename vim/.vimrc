@@ -30,6 +30,11 @@ color ron
 
 " ------------------------ enable vim settings  ----------------------------------
 " {
+    " set number      " line numbers
+    autocmd FocusLost * :set number
+    autocmd InsertEnter * :set number
+    autocmd InsertLeave * :set relativenumber
+    autocmd CursorMoved * :set relativenumber
     set clipboard=unnamed  "copies the yank lines in clipboard
     set nocompatible
     set autoindent
@@ -41,7 +46,6 @@ color ron
     set title
     set hls
     set incsearch
-    set number      " line numbers
     set t_Co=256    " set colour over terminals
     set ttymouse=xterm2 " Set this to the name of your terminal that supports mouse codes.
     set bs=indent,eol,start " Allow backspacing over everything in insert mode
