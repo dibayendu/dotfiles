@@ -1,16 +1,134 @@
-" Syntax color will be on for most languages
-syntax on
+" https://github.com/dibayendu/dotfiles/blob/master/vim/.vimrc
 
-"Colors are defined in /usr/share/vim/vim73/colors/
-color ron
-"color elflord
-"color torte
-
-
-" ------------------------ enable inbuilt plugins in vim  ----------------------------------
+" ===================================================================================
+" Basic Settings
+" ===================================================================================
 " {
-    filetype on
-    filetype plugin on
+    syntax on                   " syntax highlighing
+
+    "Colors are defined in /usr/share/vim/vim73/colors/
+    "color elflord
+    "color torte
+    color ron
+    
+    filetype on                 " try to detect filetypes
+    filetype plugin indent on   " enable loading indent file for filetype
+
+    set background=dark         " We are using dark background in vim
+    set title                   " show title in console title bar
+    set wildmenu                " Menu completion in command mode on <Tab>
+    set wildmode=full           " <Tab> cycles between all matching choices.
+    
+    set noerrorbells            " don't bell or blink
+    set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
+
+    " Ignore these files when completing
+    set wildignore+=.git,*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
+    set wildignore+=eggs/**
+    set wildignore+=*.egg-info/**
+
+    " Disable the colorcolumn when switching modes.  Make sure this is the
+    " " first autocmd for the filetype here
+    "autocmd FileType * setlocal colorcolumn=0
+
+    " relative numbers and absolute numbers
+    " {
+        " set number            " line numbers
+        autocmd FocusLost * :set number
+        autocmd InsertEnter * :set number
+        autocmd InsertLeave * :set relativenumber
+        autocmd CursorMoved * :set relativenumber
+    " }
+
+    " Insert completion
+    " don't select first item, follow typing in autocomplete
+    set completeopt=menu,menuone,longest
+    set pumheight=6             " Keep a small completion window
+    " set completeopt=menuone,longest,preview
+
+    " Moving Around/Editing
+    set cursorline              " have a line indicate the cursor location
+    set ruler                   " show the cursor position all the time
+    set nostartofline           " Avoid moving cursor to BOL when jumping around
+    set virtualedit=block       " Let cursor move past the last char in <C-v> mode
+    set scrolloff=10            " Keep 10 context lines above and below the cursor
+    set backspace=indent,eol,start " Allow backspacing autoindent, EOL, and BOL
+    set showmatch               " Briefly jump to a paren once it's balanced
+    " set nowrap                  " don't wrap text
+    " set linebreak               " don't wrap textin the middle of a word
+    set autoindent              " always set autoindenting on
+    set smartindent             " use smart indent if there is no indent file
+    set tabstop=4               " <tab> inserts 4 spaces 
+    set shiftwidth=4            " but an indent level is 2 spaces wide.
+    set softtabstop=4           " <BS> over an autoindent deletes both spaces.
+    set expandtab ts=4 sw=4 ai  " Use spaces, not tabs, for autoindent/tab key.
+    set shiftround              " rounds indent to a multiple of shiftwidth
+    set matchpairs+=<:>         " show matching <> (html mainly) as well
+    " set foldmethod=indent       " allow us to fold on indents
+    set foldlevel=99            " don't fold by default
+
+    " close preview window automatically when we move around
+    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+    " Reading/Writing
+    " set noautowrite             " Never write a file unless I request it.
+    " set noautowriteall          " NEVER.
+    " set noautoread              " Don't automatically re-read changed files.
+    " set modeline                " Allow vim options to be embedded in files;
+    " set modelines=5             " they must be within the first or last 5 lines.
+    set ffs=unix,dos,mac        " Try recognizing dos, unix, and mac line endings.
+
+    " Messages, Info, Status
+    set ls=2                    " allways show status line
+    set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
+    set confirm                 " Y-N-C prompt if closing with unsaved changes.
+    set showcmd                 " Show incomplete normal mode commands as I type.
+    set report=0                " : commands always print changed line count.
+    set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
+    set ruler                   " Show some info, even without statuslines.
+    set laststatus=2            " Always show statusline, even if only 1 window.
+    set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
+
+    " displays tabs with :set list & displays when a line runs off-screen
+    set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
+    "set list
+
+    " Searching and Patterns
+    " set ignorecase              " Default to using case insensitive searches,
+    " set smartcase               " unless uppercase letters are used in the regex.
+    set smarttab                " Handle tabs more intelligently 
+    set hlsearch                " Highlight searches by default.
+    set incsearch               " Incrementally search while typing a /regex
+
+    """" Display
+    if has("gui_running")
+        " Remove menu bar
+        set guioptions-=m
+        
+        " Remove toolbar
+        set guioptions-=T
+    endif
+
+    set clipboard=unnamed       "copies the yank lines in clipboard
+    set nocompatible
+    set copyindent              " copy the previous indentation on autoindenting
+    set encoding=utf-8
+    set t_Co=256                " set colour over terminals
+    set ttymouse=xterm2         " Name of your terminal that supports mouse codes.
+    set bs=indent,eol,start     " Allow backspacing over everything in insert mode
+    set mouse=a                 " Vim now has mouse support
+    set history=500             " keep 500 lines of command line history
+    set autoread
+    set wildmode=list:full
+    set wildmode=list:longest,full
+
+" }
+
+" ===================================================================================
+" Inbuilt plugins
+" ===================================================================================
+" {
     set omnifunc=syntaxcomplete#Complete
     autocmd FileType python set omnifunc=pythoncomplete#Complete
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -24,112 +142,46 @@ color ron
     autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
     autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-    filetype indent on
+    autocmd FileType cpp,c,ruby,python,java,php let g:easytags_include_members = 1
+    " the bottom two lines sets the spaces and tabs for specific file types
+    " autocmd FileType ruby setlocal ts=2 sts=2 sw=2 et
+    " autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
+
 " }
-" ------------------------ END enable inbuilt plugins in vim  ----------------------------------
 
-
-" ------------------------ enable vim settings  ----------------------------------
+" ===================================================================================
+" External plugins
+" ===================================================================================
 " {
-    " set number      " line numbers
-    autocmd FocusLost * :set number
-    autocmd InsertEnter * :set number
-    autocmd InsertLeave * :set relativenumber
-    autocmd CursorMoved * :set relativenumber
-    
-    """ Insert completion
-    " don't select first item, follow typing in autocomplete
-    " set completeopt=menuone,longest,preview
-    set completeopt=menu,menuone,longest
-    set pumheight=6             " Keep a small completion window
+    " external vim plugins
+    " {
+        " USING pathogen PACKAGE MANAGER
+        " this command bundles all the vim plugins in the package manager "pathogem=n"
+        " Load pathogen with docs for all plugins
+        " uses bundle to manage plugins
+        execute pathogen#infect() 
+        call pathogen#incubate()
+        call pathogen#helptags()
+    " }
 
-    " set noerrorbells " don't bell
-    " set linebreak " don't wrap textin the middle of a word
-    " set foldmethod=indent " allow us to fold on indents
-    set clipboard=unnamed  "copies the yank lines in clipboard
-    set nocompatible
-    set autoindent
-    set copyindent    " copy the previous indentation on autoindenting
-    set encoding=utf-8
-    set smartindent
-    set showmatch
-    set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
-    set title
-    set hls
-    set incsearch
-    set t_Co=256    " set colour over terminals
-    set ttymouse=xterm2 " Set this to the name of your terminal that supports mouse codes.
-    set bs=indent,eol,start " Allow backspacing over everything in insert mode
-    set mouse=a " Vim now has mouse support
-    set history=500     " keep 500 lines of command line history
-    set ruler       " show the cursor position all the time
-    set autoread
-    set wildmenu " Better? completion on command line
-    set wildmode=list:full " What to do when I press 'wildchar'. Worth tweaking to see what feels right.
-    set wildmode=list:longest,full
-    set cursorline
-    "set nowrap " does not wrap the text but with horizontal bars
-    "set ic " ignore case while searching
+" }
 
-    """" Reading/Writing
-    " set noautowrite             " Never write a file unless I request it.
-    " set noautowriteall          " NEVER.
-    " set noautoread              " Don't automatically re-read changed files.
-    " set modeline                " Allow vim options to be embedded in files;
-    " set modelines=5             " they must be within the first or last 5 lines.
-    " set ffs=unix,dos,mac        " Try recognizing dos, unix, and mac line endings.
-    
-    """" Messages, Info, Status
-    set ls=2                    " allways show status line
-    set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
-    set confirm                 " Y-N-C prompt if closing with unsaved changes.
-    set showcmd                 " Show incomplete normal mode commands as I type.
-    set report=0                " : commands always print changed line count.
-    set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
-    set ruler                   " Show some info, even without statuslines.
-    set laststatus=2            " Always show statusline, even if only 1 window.
-    set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
-
-    " indenting codes with 4 space
-    set tabstop=4 " tab = 4 spaces
-    set shiftwidth=4
-    set expandtab ts=4 sw=4 ai
-    set backspace=indent,eol,start
+" ===================================================================================
+" Shortcuts
+" ===================================================================================
+" {
+    let mapleader = ","
 
     " pressing F2 after opening a file in vim, converts all tabs to number of spaces tabstop has
     map<F2> :retab <CR> :w <CR>
 
-" }
-" ------------------------ END enable vim settings  ----------------------------------
-
-
-" ------------------------ mapping the commands ----------------------------------
-" {
-    command! Q q " Bind :Q to :q
-    command! Qa qa " all files in buffer
-    command! W w " Bind :W to :w
-    command! Wa wa " all files in buffer
-" }
-" ------------------------ end mapping the commands ----------------------------------
-
-
-" ------------------------ external vim plugins ----------------------------------
-" {
-    " USING pathogen PACKAGE MANAGER
-    " this command bundles all the vim plugins in the package manager "pathogem=n"
-    " Load pathogen with docs for all plugins
-    " uses bundle to manage plugins
-    filetype off
-    execute pathogen#infect() 
-    call pathogen#incubate()
-    call pathogen#helptags()
-" }
-" ------------------------ END external vim plugins ----------------------------------
-
-
-" ------------------------ mapping keys with vim ----------------------------------
-" {
-    let mapleader = ","
+    " mapping the commands
+    " {
+        command! Q q " Bind :Q to :q
+        command! Qa qa " all files in buffer
+        command! W w " Bind :W to :w
+        command! Wa wa " all files in buffer
+    " }
 
     " mapping vim keys with consistent keys across most applications
     " nmap <C-h> :nohl<cr> " no highlighting
@@ -219,13 +271,13 @@ color ron
         au VimResized * if line('$') > &lines | set go+=r | else | set go-=r | endif
 
 " }
-" ------------------------ END mapping keys with vim ----------------------------------
 
-
-" ------------------------ functions for VIM ----------------------------------
+" ===================================================================================
+" functions for VIM
+" ===================================================================================
 " {
 
-   " ------------------ RENAME CURRENT FILE (thanks Gary Bernhardt) ------------
+   " RENAME CURRENT FILE (thanks Gary Bernhardt)
    " {
         function! RenameFile()
             let old_name = expand('%')
@@ -238,9 +290,8 @@ color ron
         endfunction
         " map <Leader>n :call RenameFile()<cr>
     " }
-   " ------------------ END RENAME CURRENT FILE (thanks Gary Bernhardt) ------------
    
-   " ---------------- Merge a tab into a split in the previous window --------
+   " Merge a tab into a split in the previous window
    " {
         function! MergeTabs()
             if tabpagenr() == 1
@@ -258,15 +309,6 @@ color ron
         endfunction
         " nmap <C-W>u :call MergeTabs()<CR>
    " }
-   " ---------------- END Merge a tab into a split in the previous window --------
 
 " }
-" ------------------------ END functions for VIM ----------------------------------
-
-if has("autocmd")
-    autocmd FileType cpp,c,ruby,python,java,php let g:easytags_include_members = 1
-    " the bottom two lines sets the spaces and tabs for specific file types
-        " autocmd FileType ruby setlocal ts=2 sts=2 sw=2 et
-        " autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
-endif
 

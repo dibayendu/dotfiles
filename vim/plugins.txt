@@ -3,14 +3,15 @@ Command-T
 FuzzyFinder
 L9
 YouCompleteMe
+ack.vim
 bundle
 conqueterm-vim
 ctrlp.vim
+gundo.vim
 indentLine
 mru.vim
 nerdtree
 phpcomplete.vim
-print.txt
 syntastic
 tComment
 tlib_vim
