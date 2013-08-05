@@ -9,6 +9,7 @@ color ron
 
 " ------------------------ enable inbuilt plugins in vim  ----------------------------------
 " {
+    filetype on
     filetype plugin on
     set omnifunc=syntaxcomplete#Complete
     autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -35,6 +36,16 @@ color ron
     autocmd InsertEnter * :set number
     autocmd InsertLeave * :set relativenumber
     autocmd CursorMoved * :set relativenumber
+    
+    """ Insert completion
+    " don't select first item, follow typing in autocomplete
+    " set completeopt=menuone,longest,preview
+    set completeopt=menu,menuone,longest
+    set pumheight=6             " Keep a small completion window
+
+    " set noerrorbells " don't bell
+    " set linebreak " don't wrap textin the middle of a word
+    " set foldmethod=indent " allow us to fold on indents
     set clipboard=unnamed  "copies the yank lines in clipboard
     set nocompatible
     set autoindent
@@ -49,19 +60,35 @@ color ron
     set t_Co=256    " set colour over terminals
     set ttymouse=xterm2 " Set this to the name of your terminal that supports mouse codes.
     set bs=indent,eol,start " Allow backspacing over everything in insert mode
-    set confirm 
     set mouse=a " Vim now has mouse support
     set history=500     " keep 500 lines of command line history
     set ruler       " show the cursor position all the time
-    set showcmd     " display incomplete commands
     set autoread
     set wildmenu " Better? completion on command line
     set wildmode=list:full " What to do when I press 'wildchar'. Worth tweaking to see what feels right.
     set wildmode=list:longest,full
-    set completeopt=menu,menuone,longest
     set cursorline
-    "set nowrap
+    "set nowrap " does not wrap the text but with horizontal bars
     "set ic " ignore case while searching
+
+    """" Reading/Writing
+    " set noautowrite             " Never write a file unless I request it.
+    " set noautowriteall          " NEVER.
+    " set noautoread              " Don't automatically re-read changed files.
+    " set modeline                " Allow vim options to be embedded in files;
+    " set modelines=5             " they must be within the first or last 5 lines.
+    " set ffs=unix,dos,mac        " Try recognizing dos, unix, and mac line endings.
+    
+    """" Messages, Info, Status
+    set ls=2                    " allways show status line
+    set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
+    set confirm                 " Y-N-C prompt if closing with unsaved changes.
+    set showcmd                 " Show incomplete normal mode commands as I type.
+    set report=0                " : commands always print changed line count.
+    set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
+    set ruler                   " Show some info, even without statuslines.
+    set laststatus=2            " Always show statusline, even if only 1 window.
+    set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
 
     " indenting codes with 4 space
     set tabstop=4 " tab = 4 spaces
@@ -90,9 +117,11 @@ color ron
 " {
     " USING pathogen PACKAGE MANAGER
     " this command bundles all the vim plugins in the package manager "pathogem=n"
-    call pathogen#incubate()
+    " Load pathogen with docs for all plugins
     " uses bundle to manage plugins
+    filetype off
     execute pathogen#infect() 
+    call pathogen#incubate()
     call pathogen#helptags()
 " }
 " ------------------------ END external vim plugins ----------------------------------
@@ -178,6 +207,12 @@ color ron
         "let g:syntastic_enable_highlighting=0
         "let g:syntastic_auto_loc_list=1
     " }
+    
+    "NERDTree
+    "{
+        "ingoring python compiled files to show in tree
+        let NERDTreeIgnore = ['\.pyc$']
+    "}
 
     " resizing vim window for scrolling
         au VimEnter * if line('$') > &lines | set go+=r | else | set go-=r | endif
