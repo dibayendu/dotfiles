@@ -64,7 +64,7 @@
     set expandtab ts=4 sw=4 ai  " Use spaces, not tabs, for autoindent/tab key.
     set shiftround              " rounds indent to a multiple of shiftwidth
     set matchpairs+=<:>         " show matching <> (html mainly) as well
-    " set foldmethod=indent       " allow us to fold on indents
+    set foldmethod=indent       " allow us to fold on indents
     set foldlevel=99            " don't fold by default
 
     " close preview window automatically when we move around
@@ -123,6 +123,11 @@
     set wildmode=list:full
     set wildmode=list:longest,full
 
+    " resizing vim window for scrolling
+    au VimEnter * if line('$') > &lines | set go+=r | else | set go-=r | endif
+    au VimResized * if line('$') > &lines | set go+=r | else | set go-=r | endif
+
+
 " }
 
 " ===================================================================================
@@ -130,6 +135,7 @@
 " ===================================================================================
 " {
     set omnifunc=syntaxcomplete#Complete
+    set completeopt-=preview
     autocmd FileType python set omnifunc=pythoncomplete#Complete
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -153,7 +159,43 @@
 " External plugins
 " ===================================================================================
 " {
-    " external vim plugins
+    " Pathogen              " https://github.com/tpope/vim-pathogen 
+    " Command-T             " https://github.com/wincent/Command-T
+    " FuzzyFinder           " https://github.com/vim-scripts/FuzzyFinder
+    " L9                    " http://www.vim.org/scripts/script.php?script_id=3252
+    " YouCompleteMe         " https://github.com/Valloric/YouCompleteMe
+    " ack.vim               " https://github.com/mileszs/ack.vim 
+    " conqueterm-vim        " https://code.google.com/p/conque/
+    " ctrlp.vim             " https://github.com/kien/ctrlp.vim
+    " gundo.vim             " https://github.com/sjl/gundo.vim
+    " indentLine            " https://github.com/Yggdroot/indentLine
+    " mru.vim               " https://github.com/vim-scripts/mru.vim
+    " nerdtree              " https://github.com/scrooloose/nerdtree
+    " phpcomplete.vim       " https://github.com/shawncplus/phpcomplete.vim
+    " syntastic             " https://github.com/scrooloose/syntastic
+    " tComment              " https://github.com/tomtom/tcomment_vim
+    " tlib_vim              " https://github.com/vim-scripts/tlib
+    " vim-addon-mw-utils    " https://github.com/MarcWeber/vim-addon-mw-utils
+    " vim-ariline           " https://github.com/bling/vim-airline
+    " vim-buffer-explorer-plugin " http://www.vim.org/scripts/script.php?script_id=42
+    " vim-fugitive          " https://github.com/tpope/vim-fugitive
+    " vim-haml              " https://github.com/tpope/vim-haml
+    " vim-javascript        " https://github.com/pangloss/vim-javascript
+    " vim-rails             " https://github.com/tpope/vim-rails/tree/master/doc
+    " vim-ruby              " https://github.com/vim-ruby/vim-ruby
+    " vim-scriptease        " https://github.com/tpope/vim-scriptease
+    " vim-sensible          " https://github.com/tpope/vim-sensible
+    " vim-snipmate          " https://github.com/garbas/vim-snipmate
+    " vim-snippets          " https://github.com/honza/vim-snippets
+    " vim-surround          " https://github.com/tpope/vim-surround
+    " vim-visual-star-search " https://github.com/bronson/vim-visual-star-search
+
+    " vim-ariline
+    " {
+        " let g:airline_powerline_fonts = 1
+    " }
+
+    " Pathogen
     " {
         " USING pathogen PACKAGE MANAGER
         " this command bundles all the vim plugins in the package manager "pathogem=n"
@@ -162,6 +204,75 @@
         execute pathogen#infect() 
         call pathogen#incubate()
         call pathogen#helptags()
+    " }
+    
+    " Command-t
+    " {
+        " let g:CommandTMaxHeight=10
+    " }
+
+    " YouCompleteMe plugin
+    " {
+        let g:ycm_confirm_extra_conf = ''
+        let g:ycm_global_ycm_extra_conf = '.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+        let g:ycm_complete_in_comments = 0
+        let g:ycm_complete_in_strings = 0
+        let g:ycm_collect_identifiers_from_comments_and_strings = 0
+        let g:ycm_min_num_of_chars_for_completion = 1
+        let g:ycm_register_as_syntastic_checker = 1
+        let g:ycm_filepath_completion_use_working_dir = 1
+        let g:ycm_cache_omnifunc = 1
+        let g:ycm_key_invoke_completion = '<C-Space>'
+        let g:ycm_autoclose_preview_window_after_completion = 1
+        " let g:ycm_autoclose_preview_window_after_insertion = 1
+        let g:ycm_add_preview_to_completeopt = 1
+        let g:ycm_collect_identifiers_from_tags_files = 1
+        let g:ycm_seed_identifiers_with_syntax = 1
+        let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+        let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+        let g:ycm_semantic_triggers =  {
+          \   'c' : ['->', '.'],
+          \   'objc' : ['->', '.'],
+          \   'ocaml' : ['.', '#'],
+          \   'cpp,objcpp' : ['->', '.', '::'],
+          \   'perl' : ['->'],
+          \   'php' : ['->', '::'],
+          \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+          \   'ruby' : ['.', '::'],
+          \   'lua' : ['.', ':'],
+          \   'erlang' : [':'],
+          \ }
+    " }
+
+    " indentLine plugin
+    " {
+        let g:indent_guides_enable_on_vim_startup=1
+        let g:indentLine_color_term = 239
+        let g:indentLine_char = '|'
+    " }
+
+    " syntastic vim
+    " {
+        let g:syntastic_disabled_filetypes=['html' , 'php']
+        let g:syntastic_php_checkers=['php']
+            " the line below checks for styling and other unnecessary syntax checkers
+            " let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
+        let g:syntastic_error_symbol='✗'
+        let g:syntastic_warning_symbol='⚠'
+        "let g:syntastic_enable_highlighting=0
+        "let g:syntastic_auto_loc_list=1
+    " }
+    
+    " NERDTree
+    "{
+        "ingoring python compiled files to show in tree
+        let NERDTreeIgnore = ['\.pyc$']
+    "}
+
+    " CtrlP
+    " {
+        let g:ctrlp_map = '<c-p>'
+        let g:ctrlp_cmd = 'CtrlP'
     " }
 
 " }
@@ -214,24 +325,11 @@
         " map <C-l> :wincmd l<CR>
 
 
-    " mapping :CommandT keys
+    " CommandT keys
         map <Leader>t :CommandT ~/projects/<CR>
 
-    " mapping :FufFile keys
+    " :FufFile keys (Ctrlp plugin)
         map <Leader>f :FufFile ~/projects/<CR>
-
-    " YouCompleteMe plugin
-    " {
-        let g:ycm_confirm_extra_conf = ''
-        let g:ycm_global_ycm_extra_conf = '.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-        let g:ycm_complete_in_comments = 0
-        let g:ycm_complete_in_strings = 0
-        let g:ycm_collect_identifiers_from_comments_and_strings = 0
-        let g:ycm_min_num_of_chars_for_completion = 1
-        let g:ycm_register_as_syntastic_checker = 1
-        let g:ycm_cache_omnifunc = 1
-        let g:ycm_key_invoke_completion = '<C-Space>'
-    " }
 
     " snipmate trigger is now space
     " {
@@ -241,34 +339,15 @@
         imap <C-;> <Plug>snipMateVisual
     " }
 
-    " the code below enables indent_guides plugin
+    " YouCompleteMe
     " {
-        let g:indent_guides_enable_on_vim_startup=1
-        let g:indentLine_color_term = 239
-        let g:indentLine_char = '|'
-    " }
-
-    " syntastic vim
-    " {
-        let g:syntastic_disabled_filetypes=['html' , 'php']
-        let g:syntastic_php_checkers=['php']
-            " the line below checks for styling and other unnecessary syntax checkers
-            " let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
-        let g:syntastic_error_symbol='✗'
-        let g:syntastic_warning_symbol='⚠'
-        "let g:syntastic_enable_highlighting=0
-        "let g:syntastic_auto_loc_list=1
+        nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
     " }
     
-    "NERDTree
-    "{
-        "ingoring python compiled files to show in tree
-        let NERDTreeIgnore = ['\.pyc$']
-    "}
-
-    " resizing vim window for scrolling
-        au VimEnter * if line('$') > &lines | set go+=r | else | set go-=r | endif
-        au VimResized * if line('$') > &lines | set go+=r | else | set go-=r | endif
+    " Gundo vim
+    " {
+        nnoremap <F6> :GundoToggle<CR>
+    " }
 
 " }
 
