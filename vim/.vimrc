@@ -1,6 +1,37 @@
 " https://github.com/dibayendu/dotfiles/blob/master/vim/.vimrc
 
 " ===================================================================================
+" Environment
+" ===================================================================================
+" {
+    " Basics
+    " {
+        set nocompatible        " Must be first line
+        if !(has('win16') || has('win32') || has('win64'))
+            set shell=/bin/sh
+        endif
+    " }
+
+    " Windows Compatible
+    " {
+        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+        " across (heterogeneous) systems easier.
+        if has('win32') || has('win64')
+          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+        endif
+    " }
+
+    " Setup Bundle Support
+    " {
+        " The next three lines ensure that the ~/.vim/bundle/ system works
+        filetype on
+        filetype off
+        set rtp+=~/.vim/bundle/vundle
+        call vundle#rc()
+    " }
+" }
+
+" ===================================================================================
 " Basic Settings
 " ===================================================================================
 " {
@@ -10,7 +41,11 @@
     "color elflord
     "color torte
     color ron
-    
+
+    hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
+    hi TabLine ctermfg=Blue ctermbg=Yellow
+    hi TabLineSel ctermfg=Red ctermbg=Yellow
+
     filetype on                 " try to detect filetypes
     filetype plugin indent on   " enable loading indent file for filetype
 
@@ -42,7 +77,7 @@
 
     " Insert completion
     " don't select first item, follow typing in autocomplete
-    set completeopt=menu,menuone,longest
+    set completeopt=menu,menuone,longest,preview
     set pumheight=6             " Keep a small completion window
     " set completeopt=menuone,longest,preview
 
@@ -110,6 +145,8 @@
         set guioptions-=T
     endif
 
+    set splitright              " always split right
+    set splitbelow              " always split below
     set clipboard=unnamed       "copies the yank lines in clipboard
     set nocompatible
     set copyindent              " copy the previous indentation on autoindenting
@@ -135,7 +172,7 @@
 " ===================================================================================
 " {
     set omnifunc=syntaxcomplete#Complete
-    set completeopt-=preview
+    " set completeopt-=preview
     autocmd FileType python set omnifunc=pythoncomplete#Complete
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -159,6 +196,7 @@
 " External plugins
 " ===================================================================================
 " {
+    " Align                 " http://www.vim.org/scripts/script.php?script_id=294
     " Pathogen              " https://github.com/tpope/vim-pathogen 
     " Command-T             " https://github.com/wincent/Command-T
     " FuzzyFinder           " https://github.com/vim-scripts/FuzzyFinder
@@ -173,6 +211,7 @@
     " nerdtree              " https://github.com/scrooloose/nerdtree
     " phpcomplete.vim       " https://github.com/shawncplus/phpcomplete.vim
     " syntastic             " https://github.com/scrooloose/syntastic
+    " taglist               " https://github.com/vim-scripts/taglist.vim
     " tComment              " https://github.com/tomtom/tcomment_vim
     " tlib_vim              " https://github.com/vim-scripts/tlib
     " vim-addon-mw-utils    " https://github.com/MarcWeber/vim-addon-mw-utils
@@ -189,10 +228,95 @@
     " vim-snippets          " https://github.com/honza/vim-snippets
     " vim-surround          " https://github.com/tpope/vim-surround
     " vim-visual-star-search " https://github.com/bronson/vim-visual-star-search
+    " xmledit               " https://github.com/sukima/xmledit/
+    " vim-cucumber          " https://github.com/tpope/vim-cucumber
+    " vim-endwise           " https://git@github.com:tpope/vim-endwise
+    " html5.vim             " https://github.com/othree/html5.vim
+    " vim-markdown          " https://github.com/plasticboy/vim-markdown
+    " vim-ragtag            " https://github.com/tpope/vim-ragtag
+    " vim-bundler           " https://github.com/tpope/vim-bundler
+    " vim-buffergator       " https://github.com/jeetsukumaran/vim-buffergator
+    " vim-coffee-script     " https://github.com/kchmck/vim-coffee-script
+    " vim-jquery            " https://github.com/itspriddle/vim-jquery
+    " vim-nerd-tree-tabs    " https://github.com/jistr/vim-nerdtree-tabs
+    " tagbar                " https://github.com/majutsushi/tagbar
+    " jedi-vim              " https://github.com/davidhalter/jedi-vim
+    " vim-easymotion        " https://github.com/Lokaltog/vim-easymotion
+
+    " vim-easymotion
+    " {
+        let g:EasyMotion_leader_key = '<Leader>'
+    " }
+
+    " jedi-vim
+    " {
+        let g:jedi#autocompletion_command = "<C-Space>"
+        let g:jedi#popup_select_first = 0
+    " }
+
+    " tagbar
+    " {
+        let g:tagbar_left = 0
+        " let g:tagbar_width = 30
+        " let g:tagbar_autoclose = 1
+        " let g:tagbar_autofocus = 1
+        let g:tagbar_sort = 0
+        let g:tagbar_indent = 1
+        let g:tagbar_show_visibility = 1
+        let g:tagbar_iconchars = ['▶', '▼']
+        let g:tagbar_autoshowtag = 0
+        " autocmd VimEnter * nested :call tagbar#autoopen(1)
+        autocmd BufEnter * nested :call tagbar#autoopen(0)
+        " autocmd FileType * nested :call tagbar#autoopen(0)
+    " }
+
+    " vim-nerd-tree-tabs
+    " {
+        let g:nerdtree_tabs_open_on_console_startup = 1
+        let g:nerdtree_tabs_no_startup_for_diff = 1
+        let g:nerdtree_tabs_smart_startup_focus = 2
+        let g:nerdtree_tabs_open_on_new_tab = 1
+        let g:nerdtree_tabs_meaningful_tab_names = 1
+        let g:nerdtree_tabs_autoclose = 1
+        let g:nerdtree_tabs_synchronize_view = 1
+        let g:nerdtree_tabs_synchronize_focus = 1
+        let g:nerdtree_tabs_focus_on_files = 1
+    " }
+
+    " vim-markdown
+    " {
+        let g:vim_markdown_folding_disabled=1
+    " }
+
+    " vim-coffee-script
+    " {
+        au BufWritePost *.coffee silent CoffeeMake!
+    " }
+
+    " ragtag
+    " {
+        let g:ragtag_global_maps = 1
+    " }
+
+    " taglist
+    " {
+        " let Tlist_Auto_Highlight_Tag = 0
+        let Tlist_Auto_Open = 0             " TListToggle is open when a file is open
+        let Tlist_Use_Right_Window = 1
+        let Tlist_Exit_OnlyWindow = 1
+        " let Tlist_Show_One_File = 1
+        " let Tlist_Sort_Type = "name"
+        " let Tlist_Display_Prototype = 1
+        " let Tlist_GainFocus_On_ToggleOpen = 1
+        " let Tlist_Use_SingleClick = 1
+        " let Tlist_WinHeight = 20
+        " let Tlist_WinWidth = 20
+    " }
 
     " vim-ariline
     " {
         " let g:airline_powerline_fonts = 1
+        " let g:Powerline_symbols = 'fancy'
     " }
 
     " Pathogen
@@ -275,6 +399,14 @@
         let g:ctrlp_cmd = 'CtrlP'
     " }
 
+    " xmledit
+    " {
+        " let xml_tag_completion_map = "<C-l>"
+        " let xml_tag_syntax_prefixes = 'html\|xml\|xsl\|docbk'
+        " let xml_no_auto_nesting = 1
+        " let xml_use_xhtml = 1
+    " }
+
 " }
 
 " ===================================================================================
@@ -326,7 +458,7 @@
 
 
     " CommandT keys
-        map <Leader>t :CommandT ~/projects/<CR>
+        " map <Leader>t :CommandT ~/projects/<CR>
 
     " :FufFile keys (Ctrlp plugin)
         map <Leader>f :FufFile ~/projects/<CR>
