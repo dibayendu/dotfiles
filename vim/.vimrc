@@ -42,10 +42,6 @@
     "color torte
     color ron
 
-    hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
-    hi TabLine ctermfg=Blue ctermbg=Yellow
-    hi TabLineSel ctermfg=Red ctermbg=Yellow
-
     filetype on                 " try to detect filetypes
     filetype plugin indent on   " enable loading indent file for filetype
 
@@ -86,7 +82,7 @@
     set ruler                   " show the cursor position all the time
     set nostartofline           " Avoid moving cursor to BOL when jumping around
     set virtualedit=block       " Let cursor move past the last char in <C-v> mode
-    set scrolloff=10            " Keep 10 context lines above and below the cursor
+    set scrolloff=5            " Keep 5 context lines above and below the cursor
     set backspace=indent,eol,start " Allow backspacing autoindent, EOL, and BOL
     set showmatch               " Briefly jump to a paren once it's balanced
     " set nowrap                  " don't wrap text
@@ -175,20 +171,20 @@
     " set completeopt-=preview
     autocmd FileType python set omnifunc=pythoncomplete#Complete
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
     autocmd FileType php set omnifunc=phpcomplete#CompletePHP
     autocmd FileType c set omnifunc=ccomplete#Complete
     autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-    autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-    autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-    autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+    autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
+    autocmd FileType ruby,eruby let g:rubycomplete_rails=1
+    autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
 
-    autocmd FileType cpp,c,ruby,python,java,php let g:easytags_include_members = 1
+    autocmd FileType cpp,c,ruby,python,java,php let g:easytags_include_members=1
     " the bottom two lines sets the spaces and tabs for specific file types
-    " autocmd FileType ruby setlocal ts=2 sts=2 sw=2 et
-    " autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
+    autocmd FileType ruby setlocal ts=2 sts=2 sw=2 et
+    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 
 " }
 
@@ -242,45 +238,203 @@
     " tagbar                " https://github.com/majutsushi/tagbar
     " jedi-vim              " https://github.com/davidhalter/jedi-vim
     " vim-easymotion        " https://github.com/Lokaltog/vim-easymotion
+    " vim-colors-solarized  " git://github.com/altercation/vim-colors-solarized.git    
+    " neocomplcache.vim     " https://github.com/Shougo/neocomplcache.vim
+    " neosnippet.vim        " https://github.com/Shougo/neosnippet.vim
+    " vim-autoclose         " https://github.com/Townk/vim-autoclose
+    " undotree              " https://github.com/mbbill/undotree
+    " tabular               " https://github.com/godlygeek/tabular
+    " vim-repeat            " https://github.com/tpope/vim-repeat
+    " vim-dispatch          " https://github.com/tpope/vim-dispatch
+    " vim-abolish           " https://github.com/tpope/vim-abolish
+
+    " PATHOGEN NEEDS TO BE LOADED FIRST
+    " Pathogen
+    " {
+        " USING pathogen PACKAGE MANAGER
+        " this command bundles all the vim plugins in the package manager "pathogem=n"
+        " Load pathogen with docs for all plugins
+        " uses bundle to manage plugins
+        execute pathogen#infect() 
+        call pathogen#incubate()
+        call pathogen#helptags()
+    " }
+    
+    " vim-autoclose
+    " {
+        let g:AutoClosePairs = "() [] {} <> \" \'"
+        let g:AutoClosePairs_add = "<> |"
+        let g:AutoCloseProtectedRegions = ["Comment", "String", "Character"]
+    " }
+
+    " YouCompleteMe plugin
+    " {
+        let g:ycm_confirm_extra_conf=''
+        let g:ycm_global_ycm_extra_conf='.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+        let g:ycm_complete_in_comments=0
+        let g:ycm_complete_in_strings=0
+        let g:ycm_collect_identifiers_from_comments_and_strings=0
+        let g:ycm_min_num_of_chars_for_completion=1
+        let g:ycm_register_as_syntastic_checker=1
+        let g:ycm_filepath_completion_use_working_dir=1
+        let g:ycm_cache_omnifunc=1
+        let g:ycm_key_invoke_completion='<C-Space>'
+        let g:ycm_autoclose_preview_window_after_completion=1
+        " let g:ycm_autoclose_preview_window_after_insertion=1
+        let g:ycm_add_preview_to_completeopt=1
+        let g:ycm_collect_identifiers_from_tags_files=1
+        let g:ycm_seed_identifiers_with_syntax=1
+        let g:ycm_key_list_select_completion=['<TAB>', '<Down>']
+        let g:ycm_key_list_previous_completion=['<S-TAB>', '<Up>']
+        let g:ycm_semantic_triggers= {
+          \   'c' : ['->', '.'],
+          \   'objc' : ['->', '.'],
+          \   'ocaml' : ['.', '#'],
+          \   'cpp,objcpp' : ['->', '.', '::'],
+          \   'perl' : ['->'],
+          \   'php' : ['->', '::'],
+          \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+          \   'ruby' : ['.', '::'],
+          \   'lua' : ['.', ':'],
+          \   'erlang' : [':'],
+          \ }
+    " }
+
+    " neosnippet.vim
+    " {
+        " Plugin key-mappings.
+        imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+        smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+        xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+        " SuperTab like snippets behavior.
+        " imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        "     \ "\<Plug>(neosnippet_expand_or_jump)"
+        "     \: pumvisible() ? "\<C-n>" : "\<TAB>"
+        " smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        "     \ "\<Plug>(neosnippet_expand_or_jump)"
+        "     \: "\<TAB>"
+
+        " For snippet_complete marker.
+        if has('conceal')
+            set conceallevel=2 concealcursor=i
+        endif
+
+        " Enable snipMate compatibility feature.
+        let g:neosnippet#enable_snipmate_compatibility = 1
+        let g:neosnippet#enable_preview = 1
+
+        " Tell Neosnippet about the other snippets
+        let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+    " }
+
+    " newcomplcache
+    " {
+        " this plugin might have problem while moving inside markdown in insert mode
+        let g:neocomplcache_enable_at_startup = 1
+        " Use smartcase.
+        let g:neocomplcache_enable_smart_case = 1
+        " Set minimum syntax keyword length.
+        let g:neocomplcache_min_syntax_length = 1
+        let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+        " Define dictionary.
+        let g:neocomplcache_dictionary_filetype_lists = {
+            \ 'default' : '',
+            \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'scheme' : $HOME.'/.gosh_completions'
+                \ }
+        " Define keyword.
+        if !exists('g:neocomplcache_keyword_patterns')
+            let g:neocomplcache_keyword_patterns = {}
+        endif
+        let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+        " Plugin key-mappings.
+        inoremap <expr><C-g>     neocomplcache#undo_completion()
+        inoremap <expr><C-l>     neocomplcache#complete_common_string()
+        " Recommended key-mappings.
+        " <CR>: close popup and save indent.
+        inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+        function! s:my_cr_function()
+        return neocomplcache#smart_close_popup() . "\<CR>"
+        " For no inserting <CR> key.
+        "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+        endfunction
+        " <TAB>: completion.
+        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+        " <C-h>, <BS>: close popup and delete backword char.
+        " inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+        " inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <expr><C-y>  neocomplcache#close_popup()
+        inoremap <expr><C-e>  neocomplcache#cancel_popup()
+        
+        " Enable heavy omni completion.
+        if !exists('g:neocomplcache_omni_patterns')
+            let g:neocomplcache_omni_patterns = {}
+        endif
+        let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+        let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+        let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+        " For perlomni.vim setting.
+        " https://github.com/c9s/perlomni.vim
+        let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+    " }
+
+    " vim-colors-solarized
+    " {
+        let &t_Co=256
+        let g:solarized_termcolors=256
+        set background=dark
+        colorscheme solarized
+        if has('gui_running')
+            set background=light
+        else
+            set background=dark
+        endif
+        syntax enable                   " syntax highlighing
+    " }
 
     " vim-easymotion
     " {
-        let g:EasyMotion_leader_key = '<Leader>'
+        let g:EasyMotion_leader_key='<Leader>'
     " }
 
     " jedi-vim
     " {
-        let g:jedi#autocompletion_command = "<C-Space>"
-        let g:jedi#popup_select_first = 0
+        let g:jedi#autocompletion_command="<C-Space>"
+        let g:jedi#popup_select_first=0
     " }
 
     " tagbar
     " {
-        let g:tagbar_left = 0
-        " let g:tagbar_width = 30
-        " let g:tagbar_autoclose = 1
-        " let g:tagbar_autofocus = 1
-        let g:tagbar_sort = 0
-        let g:tagbar_indent = 1
-        let g:tagbar_show_visibility = 1
-        let g:tagbar_iconchars = ['▶', '▼']
-        let g:tagbar_autoshowtag = 0
+        let g:tagbar_left=0
+        " let g:tagbar_width=30
+        " let g:tagbar_autoclose=1
+        " let g:tagbar_autofocus=1
+        let g:tagbar_sort=0
+        let g:tagbar_indent=1
+        let g:tagbar_show_visibility=1
+        let g:tagbar_iconchars=['▶', '▼']
+        let g:tagbar_autoshowtag=0
+        " uncomment the line below to open tagbar automatically
+        " autocmd BufEnter * nested :call tagbar#autoopen(0)
+
         " autocmd VimEnter * nested :call tagbar#autoopen(1)
-        autocmd BufEnter * nested :call tagbar#autoopen(0)
         " autocmd FileType * nested :call tagbar#autoopen(0)
     " }
 
     " vim-nerd-tree-tabs
     " {
-        let g:nerdtree_tabs_open_on_console_startup = 1
-        let g:nerdtree_tabs_no_startup_for_diff = 1
-        let g:nerdtree_tabs_smart_startup_focus = 2
-        let g:nerdtree_tabs_open_on_new_tab = 1
-        let g:nerdtree_tabs_meaningful_tab_names = 1
-        let g:nerdtree_tabs_autoclose = 1
-        let g:nerdtree_tabs_synchronize_view = 1
-        let g:nerdtree_tabs_synchronize_focus = 1
-        let g:nerdtree_tabs_focus_on_files = 1
+        let g:nerdtree_tabs_open_on_console_startup=1
+        let g:nerdtree_tabs_no_startup_for_diff=1
+        let g:nerdtree_tabs_smart_startup_focus=2
+        let g:nerdtree_tabs_open_on_new_tab=1
+        let g:nerdtree_tabs_meaningful_tab_names=1
+        let g:nerdtree_tabs_autoclose=1
+        let g:nerdtree_tabs_synchronize_view=1
+        let g:nerdtree_tabs_synchronize_focus=1
+        let g:nerdtree_tabs_focus_on_files=1
     " }
 
     " vim-markdown
@@ -295,84 +449,40 @@
 
     " ragtag
     " {
-        let g:ragtag_global_maps = 1
+        let g:ragtag_global_maps=1
     " }
 
     " taglist
     " {
-        " let Tlist_Auto_Highlight_Tag = 0
-        let Tlist_Auto_Open = 0             " TListToggle is open when a file is open
-        let Tlist_Use_Right_Window = 1
-        let Tlist_Exit_OnlyWindow = 1
-        " let Tlist_Show_One_File = 1
-        " let Tlist_Sort_Type = "name"
-        " let Tlist_Display_Prototype = 1
-        " let Tlist_GainFocus_On_ToggleOpen = 1
-        " let Tlist_Use_SingleClick = 1
-        " let Tlist_WinHeight = 20
-        " let Tlist_WinWidth = 20
+        " let Tlist_Auto_Highlight_Tag=0
+        let Tlist_Auto_Open=0             " TListToggle is open when a file is open
+        let Tlist_Use_Right_Window=1
+        let Tlist_Exit_OnlyWindow=1
+        " let Tlist_Show_One_File=1
+        " let Tlist_Sort_Type="name"
+        " let Tlist_Display_Prototype=1
+        " let Tlist_GainFocus_On_ToggleOpen=1
+        " let Tlist_Use_SingleClick=1
+        " let Tlist_WinHeight=20
+        " let Tlist_WinWidth=20
     " }
 
     " vim-ariline
     " {
-        " let g:airline_powerline_fonts = 1
-        " let g:Powerline_symbols = 'fancy'
+        " let g:airline_powerline_fonts=1
+        " let g:Powerline_symbols='fancy'
     " }
 
-    " Pathogen
-    " {
-        " USING pathogen PACKAGE MANAGER
-        " this command bundles all the vim plugins in the package manager "pathogem=n"
-        " Load pathogen with docs for all plugins
-        " uses bundle to manage plugins
-        execute pathogen#infect() 
-        call pathogen#incubate()
-        call pathogen#helptags()
-    " }
-    
     " Command-t
     " {
         " let g:CommandTMaxHeight=10
     " }
 
-    " YouCompleteMe plugin
-    " {
-        let g:ycm_confirm_extra_conf = ''
-        let g:ycm_global_ycm_extra_conf = '.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-        let g:ycm_complete_in_comments = 0
-        let g:ycm_complete_in_strings = 0
-        let g:ycm_collect_identifiers_from_comments_and_strings = 0
-        let g:ycm_min_num_of_chars_for_completion = 1
-        let g:ycm_register_as_syntastic_checker = 1
-        let g:ycm_filepath_completion_use_working_dir = 1
-        let g:ycm_cache_omnifunc = 1
-        let g:ycm_key_invoke_completion = '<C-Space>'
-        let g:ycm_autoclose_preview_window_after_completion = 1
-        " let g:ycm_autoclose_preview_window_after_insertion = 1
-        let g:ycm_add_preview_to_completeopt = 1
-        let g:ycm_collect_identifiers_from_tags_files = 1
-        let g:ycm_seed_identifiers_with_syntax = 1
-        let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-        let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
-        let g:ycm_semantic_triggers =  {
-          \   'c' : ['->', '.'],
-          \   'objc' : ['->', '.'],
-          \   'ocaml' : ['.', '#'],
-          \   'cpp,objcpp' : ['->', '.', '::'],
-          \   'perl' : ['->'],
-          \   'php' : ['->', '::'],
-          \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
-          \   'ruby' : ['.', '::'],
-          \   'lua' : ['.', ':'],
-          \   'erlang' : [':'],
-          \ }
-    " }
-
     " indentLine plugin
     " {
         let g:indent_guides_enable_on_vim_startup=1
-        let g:indentLine_color_term = 239
-        let g:indentLine_char = '|'
+        let g:indentLine_color_term=239
+        let g:indentLine_char='|'
     " }
 
     " syntastic vim
@@ -390,21 +500,21 @@
     " NERDTree
     "{
         "ingoring python compiled files to show in tree
-        let NERDTreeIgnore = ['\.pyc$']
+        let NERDTreeIgnore=['\.pyc$']
     "}
 
     " CtrlP
     " {
-        let g:ctrlp_map = '<c-p>'
-        let g:ctrlp_cmd = 'CtrlP'
+        let g:ctrlp_map='<c-p>'
+        let g:ctrlp_cmd='CtrlP'
     " }
 
     " xmledit
     " {
-        " let xml_tag_completion_map = "<C-l>"
-        " let xml_tag_syntax_prefixes = 'html\|xml\|xsl\|docbk'
-        " let xml_no_auto_nesting = 1
-        " let xml_use_xhtml = 1
+        " let xml_tag_completion_map="<C-l>"
+        " let xml_tag_syntax_prefixes='html\|xml\|xsl\|docbk'
+        " let xml_no_auto_nesting=1
+        " let xml_use_xhtml=1
     " }
 
 " }
@@ -413,7 +523,7 @@
 " Shortcuts
 " ===================================================================================
 " {
-    let mapleader = ","
+    let mapleader=","
 
     " pressing F2 after opening a file in vim, converts all tabs to number of spaces tabstop has
     map<F2> :retab <CR> :w <CR>
@@ -466,9 +576,9 @@
     " snipmate trigger is now space
     " {
         imap <C-j> <Plug>snipMateNextOrTrigger
-        imap <C-k> <Plug>snipMateBack
-        imap <C-l> <Plug>snipMateShow
-        imap <C-;> <Plug>snipMateVisual
+        " imap <C-k> <Plug>snipMateBack
+        " imap <C-l> <Plug>snipMateShow
+        " imap <C-;> <Plug>snipMateVisual
     " }
 
     " YouCompleteMe
@@ -491,8 +601,8 @@
    " RENAME CURRENT FILE (thanks Gary Bernhardt)
    " {
         function! RenameFile()
-            let old_name = expand('%')
-            let new_name = input('New file name: ', expand('%'), 'file')
+            let old_name=expand('%')
+            let new_name=input('New file name: ', expand('%'), 'file')
             if new_name != '' && new_name != old_name
                 exec ':saveas ' . new_name
                 exec ':silent !rm ' . old_name
@@ -508,7 +618,7 @@
             if tabpagenr() == 1
                 return
             endif
-            let bufferName = bufname("%")
+            let bufferName=bufname("%")
             if tabpagenr("$") == tabpagenr()
                 close!
             else
