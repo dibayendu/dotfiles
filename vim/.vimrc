@@ -38,9 +38,9 @@
     syntax on                   " syntax highlighing
 
     "Colors are defined in /usr/share/vim/vim73/colors/
-    "color elflord
-    "color torte
-    color ron
+        "color elflord
+        "color torte
+        color ron
 
     filetype on                 " try to detect filetypes
     filetype plugin indent on   " enable loading indent file for filetype
@@ -54,9 +54,9 @@
     set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
 
     " Ignore these files when completing
-    set wildignore+=.git,*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
-    set wildignore+=eggs/**
-    set wildignore+=*.egg-info/**
+        set wildignore+=.git,*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
+        set wildignore+=eggs/**
+        set wildignore+=*.egg-info/**
 
     " Disable the colorcolumn when switching modes.  Make sure this is the
     " " first autocmd for the filetype here
@@ -71,75 +71,91 @@
         autocmd CursorMoved * :set relativenumber
     " }
 
+    " For multi-byte character support (CJK support, for example):
+        "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
+
     " Insert completion
     " don't select first item, follow typing in autocomplete
-    set completeopt=menu,menuone,longest,preview
-    set pumheight=6             " Keep a small completion window
-    " set completeopt=menuone,longest,preview
+        set completeopt=menu,menuone,longest,preview
+        set pumheight=6             " Keep a small completion window
+        " set completeopt=menuone,longest,preview
 
     " Moving Around/Editing
-    set cursorline              " have a line indicate the cursor location
-    set ruler                   " show the cursor position all the time
-    set nostartofline           " Avoid moving cursor to BOL when jumping around
-    set virtualedit=block       " Let cursor move past the last char in <C-v> mode
-    set scrolloff=5            " Keep 5 context lines above and below the cursor
-    set backspace=indent,eol,start " Allow backspacing autoindent, EOL, and BOL
-    set showmatch               " Briefly jump to a paren once it's balanced
-    " set nowrap                  " don't wrap text
-    " set linebreak               " don't wrap textin the middle of a word
-    set autoindent              " always set autoindenting on
-    set smartindent             " use smart indent if there is no indent file
-    set tabstop=4               " <tab> inserts 4 spaces 
-    set shiftwidth=4            " but an indent level is 2 spaces wide.
-    set softtabstop=4           " <BS> over an autoindent deletes both spaces.
-    set expandtab ts=4 sw=4 ai  " Use spaces, not tabs, for autoindent/tab key.
-    set shiftround              " rounds indent to a multiple of shiftwidth
-    set matchpairs+=<:>         " show matching <> (html mainly) as well
-    set foldmethod=indent       " allow us to fold on indents
-    set foldlevel=99            " don't fold by default
+        set cursorline              " have a line indicate the cursor location
+        set ruler                   " show the cursor position all the time
+        set nostartofline           " Avoid moving cursor to BOL when jumping around
+        set virtualedit=block       " Let cursor move past the last char in <C-v> mode
+        set scrolloff=5            " Keep 5 context lines above and below the cursor
+        set backspace=indent,eol,start " Allow backspacing autoindent, EOL, and BOL
+        set showmatch               " Briefly jump to a paren once it's balanced
+        " set nowrap                  " don't wrap text
+        " set linebreak               " don't wrap textin the middle of a word
+        set autoindent              " always set autoindenting on
+        set smartindent             " use smart indent if there is no indent file
+        set tabstop=4               " <tab> inserts 4 spaces 
+        set shiftwidth=4            " but an indent level is 2 spaces wide.
+        set softtabstop=4           " <BS> over an autoindent deletes both spaces.
+        set expandtab ts=4 sw=4 ai  " Use spaces, not tabs, for autoindent/tab key.
+        set shiftround              " rounds indent to a multiple of shiftwidth
+        set matchpairs+=<:>         " show matching <> (html mainly) as well
+        set foldmethod=indent       " allow us to fold on indents
+        set foldlevel=99            " don't fold by default
+        set formatoptions=c,q,r,t   " This is a sequence of letters which describes how
+                                    " automatic formatting is to be done.
+                                    "
+                                    " letter    meaning when present in 'formatoptions'
+                                    " ------    ---------------------------------------
+                                    " c         Auto-wrap comments using textwidth, inserting
+                                    "           the current comment leader automatically.
+                                    " q         Allow formatting of comments with "gq".
+                                    " r         Automatically insert the current comment leader
+                                    "           after hitting <Enter> in Insert mode. 
+                                    " t         Auto-wrap text using textwidth (does not apply
+                                    "           to comments)
 
     " close preview window automatically when we move around
-    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+        autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+        autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
     " Reading/Writing
-    " set noautowrite             " Never write a file unless I request it.
-    " set noautowriteall          " NEVER.
-    " set noautoread              " Don't automatically re-read changed files.
-    " set modeline                " Allow vim options to be embedded in files;
-    " set modelines=5             " they must be within the first or last 5 lines.
-    set ffs=unix,dos,mac        " Try recognizing dos, unix, and mac line endings.
+        " set noautowrite             " Never write a file unless I request it.
+        " set noautowriteall          " NEVER.
+        " set noautoread              " Don't automatically re-read changed files.
+        " set modeline                " Allow vim options to be embedded in files;
+        " set modelines=5             " they must be within the first or last 5 lines.
+        set ffs=unix,dos,mac        " Try recognizing dos, unix, and mac line endings.
 
     " Messages, Info, Status
-    set ls=2                    " allways show status line
-    set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
-    set confirm                 " Y-N-C prompt if closing with unsaved changes.
-    set showcmd                 " Show incomplete normal mode commands as I type.
-    set report=0                " : commands always print changed line count.
-    set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
-    set ruler                   " Show some info, even without statuslines.
-    set laststatus=2            " Always show statusline, even if only 1 window.
-    set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
+        set ls=2                    " allways show status line
+        set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
+        set confirm                 " Y-N-C prompt if closing with unsaved changes.
+        set showcmd                 " Show incomplete normal mode commands as I type.
+        set showmode                " Show current mode at the bottom
+        set report=0                " : commands always print changed line count.
+        set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
+        set ruler                   " Show some info, even without statuslines.
+        set laststatus=2            " Always show statusline, even if only 1 window.
+        set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
 
     " displays tabs with :set list & displays when a line runs off-screen
-    set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
-    "set list
+        set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
+        "set list
 
     " Searching and Patterns
-    " set ignorecase              " Default to using case insensitive searches,
-    " set smartcase               " unless uppercase letters are used in the regex.
-    set smarttab                " Handle tabs more intelligently 
-    set hlsearch                " Highlight searches by default.
+        " set ignorecase              " Default to using case insensitive searches,
+        " set smartcase               " unless uppercase letters are used in the regex.
+        set smarttab                " Handle tabs more intelligently 
+        set hlsearch                " Highlight searches by default.
     set incsearch               " Incrementally search while typing a /regex
 
     """" Display
-    if has("gui_running")
-        " Remove menu bar
-        set guioptions-=m
-        
-        " Remove toolbar
-        set guioptions-=T
-    endif
+        if has("gui_running")
+            " Remove menu bar
+            set guioptions-=m
+            
+            " Remove toolbar
+            set guioptions-=T
+        endif
 
     set splitright              " always split right
     set splitbelow              " always split below
@@ -151,15 +167,23 @@
     set ttymouse=xterm2         " Name of your terminal that supports mouse codes.
     set bs=indent,eol,start     " Allow backspacing over everything in insert mode
     set mouse=a                 " Vim now has mouse support
-    set history=500             " keep 500 lines of command line history
+    set history=1000            " keep 1000 lines of command line history
     set autoread
     set wildmode=list:full
     set wildmode=list:longest,full
 
     " resizing vim window for scrolling
-    au VimEnter * if line('$') > &lines | set go+=r | else | set go-=r | endif
-    au VimResized * if line('$') > &lines | set go+=r | else | set go-=r | endif
+        au VimEnter * if line('$') > &lines | set go+=r | else | set go-=r | endif
+        au VimResized * if line('$') > &lines | set go+=r | else | set go-=r | endif
 
+    " highlighting colour of tabs
+        " hi TabLine ctermfg=white ctermbg=white cterm=NONE
+        hi TabLineFill ctermfg=grey ctermbg=white cterm=NONE
+        " hi TabLineSel ctermfg=black ctermbg=green cterm=NONE
+        hi TabLineSel ctermfg=green ctermbg=black term=bold
+        " hi TabLineSel term=bold cterm=bold
+        " hi TabLineFill term=reverse cterm=reverse 
+        " hi TabLine term=underline cterm=underline ctermfg=15 ctermbg=242
 
 " }
 
@@ -171,15 +195,13 @@
     " set completeopt-=preview
     autocmd FileType python set omnifunc=pythoncomplete#Complete
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType json set autoindent 
     autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
     autocmd FileType php set omnifunc=phpcomplete#CompletePHP
     autocmd FileType c set omnifunc=ccomplete#Complete
     autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-    autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
-    autocmd FileType ruby,eruby let g:rubycomplete_rails=1
-    autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
 
     autocmd FileType cpp,c,ruby,python,java,php let g:easytags_include_members=1
     " the bottom two lines sets the spaces and tabs for specific file types
@@ -247,6 +269,23 @@
     " vim-repeat            " https://github.com/tpope/vim-repeat
     " vim-dispatch          " https://github.com/tpope/vim-dispatch
     " vim-abolish           " https://github.com/tpope/vim-abolish
+    " vim-multiple-cursors  " https://github.com/terryma/vim-multiple-cursors
+    " PIV                   " https://github.com/spf13/PIV
+    " vim-php-namespace     " https://github.com/arnaud-lb/vim-php-namespace
+    " checksyntax_vim       " https://github.com/tomtom/checksyntax_vim
+ " not installed   " python-mode           " https://github.com/klen/python-mode
+    " vim-json              " https://github.com/elzr/vim-json
+    " vim-less              " https://github.com/groenewege/vim-less
+    " vim-jst               " https://github.com/briancollins/vim-jst
+    " vim-css3-syntax       " https://github.com/hail2u/vim-css3-syntax
+    " vim-ruby-refactoring  " https://github.com/ecomba/vim-ruby-refactoring
+    " coveragepy.vim        " https://github.com/alfredodeza/coveragepy.vim
+    " DirDiff.vim           " https://github.com/joedicastro/DirDiff.vim
+    " emmet-vim             " https://github.com/mattn/emmet-vim
+    " gitv                  " https://github.com/gregsexton/gitv
+    " JSON.vim              " https://github.com/vim-scripts/JSON.vim
+    " vim-tmux              " https://github.com/vimez/vim-tmux
+    " neobundle.vim         " https://github.com/Shougo/neobundle.vim
 
     " PATHOGEN NEEDS TO BE LOADED FIRST
     " Pathogen
@@ -255,14 +294,41 @@
         " this command bundles all the vim plugins in the package manager "pathogem=n"
         " Load pathogen with docs for all plugins
         " uses bundle to manage plugins
+
+        filetype off
+
+        call pathogen#infect()
         execute pathogen#infect() 
         call pathogen#incubate()
         call pathogen#helptags()
+
+        filetype on                 " try to detect filetypes
+        filetype plugin indent on
+        syntax on
     " }
     
+    " JSON.vim
+    " {
+        au! BufRead,BufNewFile *.json set filetype=json 
+    " }
+
+    " vim-rails
+    " {
+        autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
+        autocmd FileType ruby,eruby let g:rubycomplete_rails=1
+        autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
+    " }
+
+    " vim-multiple-cursors
+    " {
+        let g:multi_cursor_use_default_mapping=0
+        let g:multi_cursor_exit_from_visual_mode=1
+        let g:multi_cursor_exit_from_insert_mode=1
+    " }
+
     " vim-autoclose
     " {
-        let g:AutoClosePairs = "() [] {} <> \" \'"
+        let g:AutoClosePairs = "() [] {} \" \'"
         let g:AutoClosePairs_add = "<> |"
         let g:AutoCloseProtectedRegions = ["Comment", "String", "Character"]
     " }
@@ -270,7 +336,7 @@
     " YouCompleteMe plugin
     " {
         let g:ycm_confirm_extra_conf=''
-        let g:ycm_global_ycm_extra_conf='.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+        let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
         let g:ycm_complete_in_comments=0
         let g:ycm_complete_in_strings=0
         let g:ycm_collect_identifiers_from_comments_and_strings=0
@@ -539,8 +605,8 @@
     " mapping vim keys with consistent keys across most applications
     " nmap <C-h> :nohl<cr> " no highlighting
     imap <C-l> :<Space>
-    nmap <C-s> <esc>:wa<CR>  " save all buffers
-    imap <C-s> <esc>:wa<CR>
+    nmap <C-s> <esc><esc>:wa<CR>  " save all buffers
+    imap <C-s> <esc><esc>:wa<CR>
     "nmap <C-w> <esc>:q<CR>   " quit current buffer , CAREFULL used to move between windows
     "imap <C-w> <esc>:q<CR>
     nmap <Leader>w <esc>:q<CR>   " quit current buffer , CAREFULL used to move between windows
@@ -549,6 +615,20 @@
     nmap <C-t> <esc>:tabnew<CR>  " open a new tab
     nmap <C-n> :cn<CR>
     nmap <C-p> :cp<CR>
+
+    " COMMENTED OUT MAPS
+        nmap <C-S-]> <esc><esc>gt
+        nmap <C-S-[> <esc><esc>gT
+        nmap <C-1> <esc><esc>1gt
+        nmap <C-2> <esc><esc>2gt
+        nmap <C-3> <esc><esc>3gt
+        nmap <C-4> <esc><esc>4gt
+        nmap <C-5> <esc><esc>5gt
+        nmap <C-6> <esc><esc>6gt
+        nmap <C-7> <esc><esc>7gt
+        nmap <C-8> <esc><esc>8gt
+        nmap <C-9> <esc><esc>9gt
+        nmap <C-0> <esc><esc>:tablast<CR>
 
     " These mappings make j and k move down and up by display lines, while gj and
     " gk would move down and up by real lines
