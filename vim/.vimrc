@@ -21,6 +21,7 @@
     source ~/dibayendu/repositories/dotfiles/vim/.vimrc.basic
 
 " external plugins installed
+    source ~//dibayendu/repositories/dotfiles/vim/.vimrc.bundles
     source ~/dibayendu/repositories/dotfiles/vim/.vimrc.external_plugins
 
 " key mappings and shortcuts
