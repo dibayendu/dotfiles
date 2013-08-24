@@ -102,7 +102,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
     # {
         # GIT_PS1_SHOWUPSTREAM="auto"
         # GIT_PS1_SHOWCOLORHINTS="yes"
-        # source ~/.git-prompt.sh
+        # source ~/dibayendu/repositories/dotfiles/bash/.git-prompt.sh
 
         # uncomment only one of the two lines below
         # export PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\\\$ ";'
@@ -118,14 +118,14 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
     # https://github.com/magicmonty/bash-git-prompt
     # The command below shows a prompt which contains git branch and other git info
     # {
-        # source ~/.bash/gitprompt.sh
+        source ~/dibayendu/repositories/dotfiles/bash/gitprompt.sh
     # }
 
     # this is from powerline for bash
     # . /Users/fridaymedia/powerline/powerline/bindings/bash/powerline.sh
 
     # The command below shows only the git branch
-    PS1="$NewLine$Purple\[\342\224\214\342\224\200\]\$([[ \$? != 0 ]] && echo \"$Color_Off [$Color_Off$On_Red\[\342\234\227\] $Last_Command$Color_Off]\") $Cyan$Date $Red- $Purple$Time12h $Yellow$User$BRed@$Green$Host $Cyan[$Color_Off$On_IBlack\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$Cyan]$NewLine$Purple\[\342\224\224\]> $Red[$Color_Off$On_Blue$PathShort$Red] $Color_Off\$ "
+    # PS1="$NewLine$Purple\[\342\224\214\342\224\200\]\$([[ \$? != 0 ]] && echo \"$Color_Off [$Color_Off$On_Red\[\342\234\227\] $Last_Command$Color_Off]\") $Cyan$Date $Red- $Purple$Time12h $Yellow$User$BRed@$Green$Host $Cyan[$Color_Off$On_IBlack\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$Cyan]$NewLine$Purple\[\342\224\224\]> $Red[$Color_Off$On_Blue$PathShort$Red] $Color_Off\$ "
 
     # PS1="$NewLine$Purple\[\342\224\214\342\224\200\]\$([[ \$? != 0 ]] && echo \"$Color_Off [$On_IRed\[\342\234\227\] $Last_Command$Color_Off]\") $Cyan$Date $Red- $Purple$Time12h $Yellow$User$BRed@$Green$Host $Cyan[$On_IBlack\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$Cyan]$NewLine$Purple\[\342\224\224\]> $Red[$On_IBlue$PathShort$Red] $Color_Off\$ "
 
