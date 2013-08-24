@@ -1,4 +1,6 @@
 " https://github.com/dibayendu/dotfiles/blob/master/vim/.vimrc
+" https://github.com/joedicastro/dotfiles/tree/master/vim
+" https://github.com/spf13/spf13-vim
 
 " ===================================================================================
 " Environment
@@ -47,6 +49,7 @@
 
     set background=dark         " We are using dark background in vim
     set title                   " show title in console title bar
+    " set hidden                  " hide the inactive buffers
     set wildmenu                " Menu completion in command mode on <Tab>
     set wildmode=full           " <Tab> cycles between all matching choices.
     
@@ -57,6 +60,11 @@
         set wildignore+=.git,*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
         set wildignore+=eggs/**
         set wildignore+=*.egg-info/**
+        set wildignore+=*.sw?                            " Vim swap files
+        set wildignore+=*.bak,*.?~,*.??~,*.???~,*.~      " Backup files
+        set wildignore+=*.luac                           " Lua byte code
+        set wildignore+=*.jar                            " java archives
+        set wildignore+=*.stats                          " Pylint stats
 
     " Disable the colorcolumn when switching modes.  Make sure this is the
     " " first autocmd for the filetype here
@@ -81,6 +89,7 @@
         " set completeopt=menuone,longest,preview
 
     " Moving Around/Editing
+        " set fillchars+=vert:│       " better looking for windows separator "
         set cursorline              " have a line indicate the cursor location
         set ruler                   " show the cursor position all the time
         set nostartofline           " Avoid moving cursor to BOL when jumping around
@@ -124,8 +133,13 @@
         " set modeline                " Allow vim options to be embedded in files;
         " set modelines=5             " they must be within the first or last 5 lines.
         set ffs=unix,dos,mac        " Try recognizing dos, unix, and mac line endings.
+        " set virtualedit=all             " to edit where there is no actual character
 
     " Messages, Info, Status
+        " set go-=T                   " hide the toolbar
+        " set go-=m                   " hide the menu
+        " set go+=rRlLbh              " show all the scrollbars
+        " set go-=rRlLbh              " hide all the scrollbars
         set ls=2                    " allways show status line
         set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
         set confirm                 " Y-N-C prompt if closing with unsaved changes.
@@ -137,8 +151,10 @@
         set laststatus=2            " Always show statusline, even if only 1 window.
         set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
 
+    " Show hidden chars
     " displays tabs with :set list & displays when a line runs off-screen
         set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
+        " set listchars=tab:→\ ,eol:↵,trail:·,extends:↷,precedes:↶
         "set list
 
     " Searching and Patterns
@@ -157,17 +173,30 @@
             set guioptions-=T
         endif
 
+    set lazyredraw              " only redraws if it is needed
+    set ttyfast                 " better screen redraw
     set splitright              " always split right
     set splitbelow              " always split below
-    set clipboard=unnamed       "copies the yank lines in clipboard
+
+    if has ('x') && has ('gui') " On Linux use + register for copy-paste
+        set clipboard=unnamedplus
+    elseif has ('gui')          " On mac and Windows, use * register for copy-paste
+        set clipboard=unnamed
+    endif
+
+    " set clipboard=unnamed       "copies the yank lines in clipboard
     set nocompatible
     set copyindent              " copy the previous indentation on autoindenting
-    set encoding=utf-8
+    scriptencoding utf-8
+    set encoding=utf-8          " setup the encoding to UTF-8
     set t_Co=256                " set colour over terminals
     set ttymouse=xterm2         " Name of your terminal that supports mouse codes.
     set bs=indent,eol,start     " Allow backspacing over everything in insert mode
     set mouse=a                 " Vim now has mouse support
+    set mousehide               " Hide the mouse cursor while typing "
     set history=1000            " keep 1000 lines of command line history
+    " set undofile
+    " set undoreload=1000
     set autoread
     set wildmode=list:full
     set wildmode=list:longest,full
@@ -184,6 +213,36 @@
         " hi TabLineSel term=bold cterm=bold
         " hi TabLineFill term=reverse cterm=reverse 
         " hi TabLine term=underline cterm=underline ctermfg=15 ctermbg=242
+
+    " Backups
+    " {
+        " set backup
+        " set noswapfile
+        " set backupdir=$HOME/.vim/tmp/backup/
+        " set undodir=$HOME/.vim/tmp/undo/
+        " set directory=$HOME/.vim/tmp/swap/
+        " set viminfo+=n$HOME/.vim/tmp/viminfo
+
+        " " make this dirs if no exists previously
+        " silent! call MakeDirIfNoExists(&undodir)
+        " silent! call MakeDirIfNoExists(&backupdir)
+        " silent! call MakeDirIfNoExists(&directory)
+    " }
+    
+    " Ok, a vim for men, get off the cursor keys
+    " {
+        " nnoremap <up> <nop>
+        " nnoremap <down> <nop>
+        " nnoremap <left> <nop>
+        " nnoremap <right> <nop>
+        " inoremap <up> <nop>
+        " inoremap <down> <nop>
+        " inoremap <left> <nop>
+        " inoremap <right> <nop>
+    " }
+
+    " Resize the divisions if the Vim window size changes
+        " au VimResized * exe "normal! \<c-w>="
 
 " }
 
@@ -286,6 +345,14 @@
     " JSON.vim              " https://github.com/vim-scripts/JSON.vim
     " vim-tmux              " https://github.com/vimez/vim-tmux
     " neobundle.vim         " https://github.com/Shougo/neobundle.vim
+" not installed    " neocomplete           " https://github.com/Shougo/neocomplete.vim cause it requires vim to compile with +lua
+" not installed    " ultisnips             " https://github.com/SirVer/ultisnips
+    " unite.vim             " https://github.com/Shougo/unite.vim
+    " unite-outline         " https://github.com/Shougo/unite-outline
+    " vim-characterize      " https://github.com/tpope/vim-characterize
+    " vim-abolish           " https://github.com/tpope/vim-abolish
+    " vim-repeat            " https://github.com/tpope/vim-repeat
+    " vim-virtualenv        " https://github.com/jmcantrell/vim-virtualenv
 
     " PATHOGEN NEEDS TO BE LOADED FIRST
     " Pathogen
@@ -306,7 +373,12 @@
         filetype plugin indent on
         syntax on
     " }
-    
+
+    " PIV {
+        let g:DisableAutoPHPFolding = 0
+        let g:PIVAutoClose = 0
+    " }
+
     " JSON.vim
     " {
         au! BufRead,BufNewFile *.json set filetype=json 
@@ -459,6 +531,9 @@
             set background=dark
         endif
         syntax enable                   " syntax highlighing
+        let g:solarized_termtrans=1
+        let g:solarized_contrast="high"
+        let g:solarized_visibility="high"
     " }
 
     " vim-easymotion
@@ -591,8 +666,43 @@
 " {
     let mapleader=","
 
+    " Easier horizontal scrolling
+        map zl zL
+        map zh zH
+
+    " Toggle folding
+        nnoremap \ za
+        vnoremap \ za
+
+    " Hide hidden characters
+        nmap <Leader>eh :set list!<CR>
+
+    " Spelling
+    " {
+        " turn on the spell checking and set the Spanish language
+            nmap <Leader>ss :setlocal spell spelllang=es<CR>
+        " turn on the spell checking and set the English language
+            nmap <Leader>se :setlocal spell spelllang=en<CR>
+        " turn off the spell checking
+            nmap <Leader>so :setlocal nospell <CR>
+        " jump to the next bad spell word
+            nmap <Leader>sn ]s
+        " suggest words
+            nmap <Leader>sp z=
+        " jump to the next bad spell word and suggests a correct one
+            nmap <Leader>sc ]sz=
+        " add word to the dictionary
+            nmap <Leader>sa zg
+    " }
+
+    " Delete trailing whitespaces
+        nmap <silent><Leader>et :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
     " pressing F2 after opening a file in vim, converts all tabs to number of spaces tabstop has
-    map<F2> :retab <CR> :w <CR>
+        map<F2> :retab <CR> :w <CR>
+
+    " Toggle the search results highlighting
+        map <silent><Leader>eq :set invhlsearch<CR>
 
     " mapping the commands
     " {
@@ -645,6 +755,10 @@
         " map <C-j> :wincmd j<CR>
         " map <C-k> :wincmd k<CR>
         " map <C-l> :wincmd l<CR>
+        " nnoremap <C-h> <C-w>h
+        " nnoremap <C-j> <C-w>j
+        " nnoremap <C-k> <C-w>k
+        " nnoremap <C-l> <C-w>l
 
 
     " CommandT keys
@@ -710,6 +824,15 @@
         endfunction
         " nmap <C-W>u :call MergeTabs()<CR>
    " }
+
+    " Make a dir if no exists
+    " {
+        function! MakeDirIfNoExists(path)
+            if !isdirectory(expand(a:path))
+                call mkdir(expand(a:path), "p")
+            endif
+        endfunction
+    " }
 
 " }
 
