@@ -1,0 +1,49 @@
+" ===================================================================================
+" functions for VIM
+" ===================================================================================
+" {
+
+   " RENAME CURRENT FILE (thanks Gary Bernhardt)
+   " {
+        function! RenameFile()
+            let old_name=expand('%')
+            let new_name=input('New file name: ', expand('%'), 'file')
+            if new_name != '' && new_name != old_name
+                exec ':saveas ' . new_name
+                exec ':silent !rm ' . old_name
+                redraw!
+            endif
+        endfunction
+        " map <Leader>n :call RenameFile()<cr>
+    " }
+   
+   " Merge a tab into a split in the previous window
+   " {
+        function! MergeTabs()
+            if tabpagenr() == 1
+                return
+            endif
+            let bufferName=bufname("%")
+            if tabpagenr("$") == tabpagenr()
+                close!
+            else
+                close!
+                tabprev
+            endif
+            split
+            execute "buffer " . bufferName
+        endfunction
+        " nmap <C-W>u :call MergeTabs()<CR>
+   " }
+
+    " Make a dir if no exists
+    " {
+        function! MakeDirIfNoExists(path)
+            if !isdirectory(expand(a:path))
+                call mkdir(expand(a:path), "p")
+            endif
+        endfunction
+    " }
+
+" }
+

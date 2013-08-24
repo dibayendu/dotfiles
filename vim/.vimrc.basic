@@ -1,0 +1,235 @@
+" ===================================================================================
+" Basic Settings
+" ===================================================================================
+" {
+    syntax on                   " syntax highlighing
+
+    "Colors are defined in /usr/share/vim/vim73/colors/
+        "color elflord
+        "color torte
+        color ron
+
+    filetype on                 " try to detect filetypes
+    filetype plugin indent on   " enable loading indent file for filetype
+
+    set background=dark         " We are using dark background in vim
+    set title                   " show title in console title bar
+    " set hidden                  " hide the inactive buffers
+    set wildmenu                " Menu completion in command mode on <Tab>
+    set wildmode=full           " <Tab> cycles between all matching choices.
+    
+    set noerrorbells            " don't bell or blink
+    set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
+
+    " Ignore these files when completing
+        set wildignore+=.git,*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
+        set wildignore+=eggs/**
+        set wildignore+=*.egg-info/**
+        set wildignore+=*.sw?                            " Vim swap files
+        set wildignore+=*.bak,*.?~,*.??~,*.???~,*.~      " Backup files
+        set wildignore+=*.luac                           " Lua byte code
+        set wildignore+=*.jar                            " java archives
+        set wildignore+=*.stats                          " Pylint stats
+
+    " Disable the colorcolumn when switching modes.  Make sure this is the
+    " " first autocmd for the filetype here
+    "autocmd FileType * setlocal colorcolumn=0
+
+    " relative numbers and absolute numbers
+    " {
+        " set number            " line numbers
+        autocmd FocusLost * :set number
+        autocmd InsertEnter * :set number
+        autocmd InsertLeave * :set relativenumber
+        autocmd CursorMoved * :set relativenumber
+    " }
+
+    " For multi-byte character support (CJK support, for example):
+        "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
+
+    " Insert completion
+    " don't select first item, follow typing in autocomplete
+        set completeopt=menu,menuone,longest,preview
+        set pumheight=6             " Keep a small completion window
+        " set completeopt=menuone,longest,preview
+
+    " Moving Around/Editing
+        " set fillchars+=vert:│       " better looking for windows separator "
+        set cursorline              " have a line indicate the cursor location
+        set ruler                   " show the cursor position all the time
+        set nostartofline           " Avoid moving cursor to BOL when jumping around
+        set virtualedit=block       " Let cursor move past the last char in <C-v> mode
+        set scrolloff=5            " Keep 5 context lines above and below the cursor
+        set backspace=indent,eol,start " Allow backspacing autoindent, EOL, and BOL
+        set showmatch               " Briefly jump to a paren once it's balanced
+        " set nowrap                  " don't wrap text
+        " set linebreak               " don't wrap textin the middle of a word
+        set autoindent              " always set autoindenting on
+        set smartindent             " use smart indent if there is no indent file
+        set tabstop=4               " <tab> inserts 4 spaces 
+        set shiftwidth=4            " but an indent level is 2 spaces wide.
+        set softtabstop=4           " <BS> over an autoindent deletes both spaces.
+        set expandtab ts=4 sw=4 ai  " Use spaces, not tabs, for autoindent/tab key.
+        set shiftround              " rounds indent to a multiple of shiftwidth
+        set matchpairs+=<:>         " show matching <> (html mainly) as well
+        set foldmethod=indent       " allow us to fold on indents
+        set foldlevel=99            " don't fold by default
+        set formatoptions=c,q,r,t   " This is a sequence of letters which describes how
+                                    " automatic formatting is to be done.
+                                    "
+                                    " letter    meaning when present in 'formatoptions'
+                                    " ------    ---------------------------------------
+                                    " c         Auto-wrap comments using textwidth, inserting
+                                    "           the current comment leader automatically.
+                                    " q         Allow formatting of comments with "gq".
+                                    " r         Automatically insert the current comment leader
+                                    "           after hitting <Enter> in Insert mode. 
+                                    " t         Auto-wrap text using textwidth (does not apply
+                                    "           to comments)
+
+    " close preview window automatically when we move around
+        autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+        autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+    " Reading/Writing
+        " set noautowrite             " Never write a file unless I request it.
+        " set noautowriteall          " NEVER.
+        " set noautoread              " Don't automatically re-read changed files.
+        " set modeline                " Allow vim options to be embedded in files;
+        " set modelines=5             " they must be within the first or last 5 lines.
+        set ffs=unix,dos,mac        " Try recognizing dos, unix, and mac line endings.
+        " set virtualedit=all             " to edit where there is no actual character
+
+    " Messages, Info, Status
+        " set go-=T                   " hide the toolbar
+        " set go-=m                   " hide the menu
+        " set go+=rRlLbh              " show all the scrollbars
+        " set go-=rRlLbh              " hide all the scrollbars
+        set ls=2                    " allways show status line
+        set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
+        set confirm                 " Y-N-C prompt if closing with unsaved changes.
+        set showcmd                 " Show incomplete normal mode commands as I type.
+        set showmode                " Show current mode at the bottom
+        set report=0                " : commands always print changed line count.
+        set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
+        set ruler                   " Show some info, even without statuslines.
+        set laststatus=2            " Always show statusline, even if only 1 window.
+        set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
+
+    " Show hidden chars
+    " displays tabs with :set list & displays when a line runs off-screen
+        set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
+        " set listchars=tab:→\ ,eol:↵,trail:·,extends:↷,precedes:↶
+        "set list
+
+    " Searching and Patterns
+        " set ignorecase              " Default to using case insensitive searches,
+        " set smartcase               " unless uppercase letters are used in the regex.
+        set smarttab                " Handle tabs more intelligently 
+        set hlsearch                " Highlight searches by default.
+    set incsearch               " Incrementally search while typing a /regex
+
+    """" Display
+        if has("gui_running")
+            " Remove menu bar
+            set guioptions-=m
+            
+            " Remove toolbar
+            set guioptions-=T
+        endif
+
+    set lazyredraw              " only redraws if it is needed
+    set ttyfast                 " better screen redraw
+    set splitright              " always split right
+    set splitbelow              " always split below
+
+    " if has ('x') && has ('gui') " On Linux use + register for copy-paste
+    "     set clipboard=unnamedplus
+    " elseif has ('gui')          " On mac and Windows, use * register for copy-paste
+    "     set clipboard=unnamed
+    " endif
+
+    set clipboard=unnamed       "copies the yank lines in clipboard
+    set nocompatible
+    set copyindent              " copy the previous indentation on autoindenting
+    scriptencoding utf-8
+    set encoding=utf-8          " setup the encoding to UTF-8
+    set t_Co=256                " set colour over terminals
+    set ttymouse=xterm2         " Name of your terminal that supports mouse codes.
+    set bs=indent,eol,start     " Allow backspacing over everything in insert mode
+    set mouse=a                 " Vim now has mouse support
+    set mousehide               " Hide the mouse cursor while typing "
+    set history=1000            " keep 1000 lines of command line history
+    " set undofile
+    " set undoreload=1000
+    set autoread
+    set wildmode=list:full
+    set wildmode=list:longest,full
+
+    " resizing vim window for scrolling
+        au VimEnter * if line('$') > &lines | set go+=r | else | set go-=r | endif
+        au VimResized * if line('$') > &lines | set go+=r | else | set go-=r | endif
+
+    " highlighting colour of tabs
+        " hi TabLine ctermfg=white ctermbg=white cterm=NONE
+        hi TabLineFill ctermfg=grey ctermbg=white cterm=NONE
+        " hi TabLineSel ctermfg=black ctermbg=green cterm=NONE
+        hi TabLineSel ctermfg=green ctermbg=black term=bold
+        " hi TabLineSel term=bold cterm=bold
+        " hi TabLineFill term=reverse cterm=reverse 
+        " hi TabLine term=underline cterm=underline ctermfg=15 ctermbg=242
+
+    " Backups
+    " {
+        " set backup
+        " set noswapfile
+        " set backupdir=$HOME/.vim/tmp/backup/
+        " set undodir=$HOME/.vim/tmp/undo/
+        " set directory=$HOME/.vim/tmp/swap/
+        " set viminfo+=n$HOME/.vim/tmp/viminfo
+
+        " " make this dirs if no exists previously
+        " silent! call MakeDirIfNoExists(&undodir)
+        " silent! call MakeDirIfNoExists(&backupdir)
+        " silent! call MakeDirIfNoExists(&directory)
+    " }
+    
+    " Ok, a vim for men, get off the cursor keys
+    " {
+        " nnoremap <up> <nop>
+        " nnoremap <down> <nop>
+        " nnoremap <left> <nop>
+        " nnoremap <right> <nop>
+        " inoremap <up> <nop>
+        " inoremap <down> <nop>
+        " inoremap <left> <nop>
+        " inoremap <right> <nop>
+    " }
+
+    " Resize the divisions if the Vim window size changes
+        " au VimResized * exe "normal! \<c-w>="
+
+" }
+
+" ===================================================================================
+" Inbuilt plugins
+" ===================================================================================
+" {
+    set omnifunc=syntaxcomplete#Complete
+    " set completeopt-=preview
+    autocmd FileType python set omnifunc=pythoncomplete#Complete
+    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType json set autoindent 
+    autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+    autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+    autocmd FileType c set omnifunc=ccomplete#Complete
+    autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+
+    autocmd FileType cpp,c,ruby,python,java,php let g:easytags_include_members=1
+    " the bottom two lines sets the spaces and tabs for specific file types
+    autocmd FileType ruby setlocal ts=2 sts=2 sw=2 et
+    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
+
+" }

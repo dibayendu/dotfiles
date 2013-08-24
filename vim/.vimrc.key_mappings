@@ -1,0 +1,126 @@
+" ===================================================================================
+" Key mappings
+" ===================================================================================
+" {
+    let mapleader=","
+
+    " Easier horizontal scrolling
+        map zl zL
+        map zh zH
+
+    " Toggle folding
+        nnoremap \ za
+        vnoremap \ za
+
+    " Hide hidden characters
+        nmap <Leader>eh :set list!<CR>
+
+    " Spelling
+    " {
+        " turn on the spell checking and set the Spanish language
+            nmap <Leader>ss :setlocal spell spelllang=es<CR>
+        " turn on the spell checking and set the English language
+            nmap <Leader>se :setlocal spell spelllang=en<CR>
+        " turn off the spell checking
+            nmap <Leader>so :setlocal nospell <CR>
+        " jump to the next bad spell word
+            nmap <Leader>sn ]s
+        " suggest words
+            nmap <Leader>sp z=
+        " jump to the next bad spell word and suggests a correct one
+            nmap <Leader>sc ]sz=
+        " add word to the dictionary
+            nmap <Leader>sa zg
+    " }
+
+    " Delete trailing whitespaces
+        nmap <silent><Leader>et :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+    " pressing F2 after opening a file in vim, converts all tabs to number of spaces tabstop has
+        map<F2> :retab <CR> :w <CR>
+
+    " Toggle the search results highlighting
+        map <silent><Leader>eq :set invhlsearch<CR>
+
+    " mapping the commands
+    " {
+        command! Q q " Bind :Q to :q
+        command! Qa qa " all files in buffer
+        command! W w " Bind :W to :w
+        command! Wa wa " all files in buffer
+    " }
+
+    " mapping vim keys with consistent keys across most applications
+    " nmap <C-h> :nohl<cr> " no highlighting
+    imap <C-l> :<Space>
+    nmap <C-s> <esc><esc>:wa<CR>  " save all buffers
+    imap <C-s> <esc><esc>:wa<CR>
+    "nmap <C-w> <esc>:q<CR>   " quit current buffer , CAREFULL used to move between windows
+    "imap <C-w> <esc>:q<CR>
+    nmap <Leader>w <esc>:q<CR>   " quit current buffer , CAREFULL used to move between windows
+    nmap <C-q> <esc>:q<CR>  " quit current buffer
+    imap <C-q> <esc>:q<CR>
+    nmap <C-t> <esc>:tabnew<CR>  " open a new tab
+    nmap <C-n> :cn<CR>
+    nmap <C-p> :cp<CR>
+
+    " COMMENTED OUT MAPS
+        nmap <C-S-]> <esc><esc>gt
+        nmap <C-S-[> <esc><esc>gT
+        nmap <C-1> <esc><esc>1gt
+        nmap <C-2> <esc><esc>2gt
+        nmap <C-3> <esc><esc>3gt
+        nmap <C-4> <esc><esc>4gt
+        nmap <C-5> <esc><esc>5gt
+        nmap <C-6> <esc><esc>6gt
+        nmap <C-7> <esc><esc>7gt
+        nmap <C-8> <esc><esc>8gt
+        nmap <C-9> <esc><esc>9gt
+        nmap <C-0> <esc><esc>:tablast<CR>
+
+    " These mappings make j and k move down and up by display lines, while gj and
+    " gk would move down and up by real lines
+    " {
+        nnoremap k gk
+        nnoremap gk k
+        nnoremap j gj
+        nnoremap gj j
+    " }
+
+    " mapping to move between split screens, default <C-w> + <C-[hjkl]>
+    " if the controls below are enabled, Fuzzy-Finder commands need to be reamapped
+        " map <C-h> :wincmd h<CR>
+        " map <C-j> :wincmd j<CR>
+        " map <C-k> :wincmd k<CR>
+        " map <C-l> :wincmd l<CR>
+        " nnoremap <C-h> <C-w>h
+        " nnoremap <C-j> <C-w>j
+        " nnoremap <C-k> <C-w>k
+        " nnoremap <C-l> <C-w>l
+
+
+    " CommandT keys
+        " map <Leader>t :CommandT ~/projects/<CR>
+
+    " :FufFile keys (Ctrlp plugin)
+        map <Leader>f :FufFile ~/projects/<CR>
+
+    " snipmate trigger is now space
+    " {
+        imap <C-j> <Plug>snipMateNextOrTrigger
+        " imap <C-k> <Plug>snipMateBack
+        " imap <C-l> <Plug>snipMateShow
+        " imap <C-;> <Plug>snipMateVisual
+    " }
+
+    " YouCompleteMe
+    " {
+        nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+    " }
+    
+    " Gundo vim
+    " {
+        nnoremap <F6> :GundoToggle<CR>
+    " }
+
+" }
