@@ -121,6 +121,9 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
         # source ~/.bash/gitprompt.sh
     # }
 
+    # this is from powerline for bash
+    # . /Users/fridaymedia/powerline/powerline/bindings/bash/powerline.sh
+
     # The command below shows only the git branch
     PS1="$NewLine$Purple\[\342\224\214\342\224\200\]\$([[ \$? != 0 ]] && echo \"$Color_Off [$Color_Off$On_Red\[\342\234\227\] $Last_Command$Color_Off]\") $Cyan$Date $Red- $Purple$Time12h $Yellow$User$BRed@$Green$Host $Cyan[$Color_Off$On_IBlack\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$Cyan]$NewLine$Purple\[\342\224\224\]> $Red[$Color_Off$On_Blue$PathShort$Red] $Color_Off\$ "
 
@@ -133,6 +136,26 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
     # PS1="\[\033[1;32m\]\d \t\[\033[0m\]\[\033[1;31m\]@\[\033[0m\]\[\033[1;35m\][\w]\[\033[0m\]\[\033[0;36m\]\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\n\$\[\033[0m\] "
     # PS1="\[\033[1;32m\]\d \t\[\033[0m\]\[\033[1;31m\]@\[\033[0m\]\[\033[1;35m\][\w]\[\033[0m\]"
 
+# }
+
+
+# ===================================================================================
+# directories shortcut using marks
+# ===================================================================================
+# {
+    export MARKPATH=$HOME/.marks
+    function jump { 
+        cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
+    }
+    function mark { 
+        mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
+    }
+    function unmark { 
+        rm -i $MARKPATH/$1 
+    }
+    function marks {
+        ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/ -/g' && echo
+    }
 # }
 
 # ===================================================================================
@@ -157,17 +180,113 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
     PYTHONSTARTUP=~/.pythonrc.py
     export PYTHONSTARTUP
+
+    # the line below evaluates fash for directory searching
+        fasd_cache="$HOME/.fasd-init-bash"
+        if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+            fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+        fi
+        source "$fasd_cache"
+        unset fasd_cache
 # }
 
 # ===================================================================================
 # Alias
 # ===================================================================================
 # {
+
+    ## Modified commands 
+    # {
+        alias diff='colordiff'              # requires colordiff package
+        # alias grep='grep --color=auto'
+        # alias more='less'
+        # alias df='df -h'
+        # alias du='du -c -h'
+        # alias mkdir='mkdir -p -v'
+        # alias nano='nano -w'
+        # alias ping='ping -c 5'
+    # }
+
+    ## New commands 
+    # {
+        # alias da='date "+%A, %B %d, %Y [%T]"'
+        # alias du1='du --max-depth=1'
+        # alias hist='history | grep'         # requires an argument
+        # alias openports='ss --all --numeric --processes --ipv4 --ipv6'
+        # alias pgg='ps -Af | grep'           # requires an argument
+        # alias ..='cd ..'
+    # }
+
+    # Privileged access
+    # if [ $UID -ne 0 ]; then
+    #     alias sudo='sudo '
+    #     alias scat='sudo cat'
+    #     alias svim='sudoedit'
+    #     alias root='sudo -s'
+    #     alias reboot='sudo systemctl reboot'
+    #     alias poweroff='sudo systemctl poweroff'
+    #     alias update='sudo pacman -Su'
+    #     alias netctl='sudo netctl'
+    # fi
+
+    ## ls 
+    # {
+        alias l='ls -la -Grlt'
+        # alias ls='ls -hF --color=auto'
+        alias ls='ls -G'
+        alias lr='ls -R'                    # recursive ls
+        alias ll='ls -l'
+        alias la='ll -A'
+        alias lx='ll -BX'                   # sort by extension
+        alias lz='ll -rS'                   # sort by size
+        alias lt='ll -rt'                   # sort by date
+        alias lm='la | more'
+    # }
+
+    ## Safety features 
+    # {
+        alias cp='cp -i'
+        alias mv='mv -i'
+        # alias rm='rm -I'                    # 'rm -i' prompts for every file
+        alias rm='rm -i'
+        # safer alternative w/ timeout, not stored in history
+        # alias rm=' timeout 3 rm -Iv --one-file-system'
+        # alias ln='ln -i'
+        # alias chown='chown --preserve-root'
+        # alias chmod='chmod --preserve-root'
+        # alias chgrp='chgrp --preserve-root'
+        # alias cls=' echo -ne "\033c"'       # clear screen for real (it does not work in Terminology)
+    # }
+
+    ## Make Bash error tolerant 
+    # {
+        alias :q=' exit'
+        alias :Q=' exit'
+        alias :x=' exit'
+        alias cd..='cd ..'
+    # }
+
+    ## Pacman aliases 
+    # {
+        #if necessary, replace 'pacman' with your favorite AUR helper and adapt the commands accordingly
+        # alias pac="sudo /usr/bin/pacman -S"		# default action	- install one or more packages
+        # alias pacu="/usr/bin/pacman -Syu"		# '[u]pdate'		- upgrade all packages to their newest version
+        # alias pacr="sudo /usr/bin/pacman -Rs"		# '[r]emove'		- uninstall one or more packages
+        # alias pacs="/usr/bin/pacman -Ss"		# '[s]earch'		- search for a package using one or more keywords
+        # alias paci="/usr/bin/pacman -Si"		# '[i]nfo'		- show information about a package
+        # alias paclo="/usr/bin/pacman -Qdt"		# '[l]ist [o]rphans'	- list all packages which are orphaned
+        # alias pacc="sudo /usr/bin/pacman -Scc"		# '[c]lean cache'	- delete all not currently installed package files
+        # alias paclf="/usr/bin/pacman -Ql"		# '[l]ist [f]iles'	- list all files installed by a given package
+        # alias pacexpl="/usr/bin/pacman -D --asexp"	# 'mark as [expl]icit'	- mark one or more packages as explicitly installed 
+        # alias pacimpl="/usr/bin/pacman -D --asdep"	# 'mark as [impl]icit'	- mark one or more packages as non explicitly installed
+
+        # '[r]emove [o]rphans' - recursively remove ALL orphaned packages
+        # alias pacro="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rs \$(/usr/bin/pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')"
+    # }
+
+    alias find='find . -name'
     alias readonly_vim='vim -R -M'
-    alias rm='rm -i'
     alias c='clear'
-    alias l='ls -la -Grlt'
-    alias ls='ls -G'
     alias php_error='tail -f /Applications/MAMP/logs/php_error.log & '
     alias apache_error='tail -f /Applications/MAMP/logs/apache_error.log & '
     alias mysql_error='tail -f /Applications/MAMP/logs/mysql_error_log.err & '
