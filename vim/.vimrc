@@ -8,7 +8,7 @@
 " Source: http://github.com/dibayendu/dotfiles/blob/master/vim/.vimrc
 "
 " References: 
-"   http://github.com/joedicastro/dotfiles/tree/master/vim
+"   http://github.com/joedicastro/dotfiles
 "   https://github.com/spf13/spf13-vim
 
 " environment variables in vim
