@@ -11,13 +11,11 @@ set nocompatible               " be iMproved
  " My Bundles here:
  "
     " original repos on github
-        Bundle 'wincent/Command-T'
         Bundle 'joedicastro/DirDiff.vim'
         Bundle 'vim-scripts/FuzzyFinder'
         Bundle 'vim-scripts/JSON.vim'
         Bundle 'spf13/PIV'
         Bundle 'mileszs/ack.vim'
-        Bundle 'tomtom/checksyntax_vim'
         Bundle 'alfredodeza/coveragepy.vim'
         Bundle 'kien/ctrlp.vim'
         Bundle 'mattn/emmet-vim'
@@ -36,7 +34,6 @@ set nocompatible               " be iMproved
         Bundle 'tomtom/tcomment_vim'
         Bundle 'godlygeek/tabular'
         Bundle 'majutsushi/tagbar'
-        Bundle 'vim-scripts/taglist.vim'
         Bundle 'vim-scripts/tlib'
         Bundle 'mbbill/undotree'
         Bundle 'Shougo/unite-outline'

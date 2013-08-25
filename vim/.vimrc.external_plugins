@@ -3,7 +3,6 @@
 " ===================================================================================
 " {
     " Pathogen              " https://github.com/tpope/vim-pathogen 
-    " Command-T             " https://github.com/wincent/Command-T
     " FuzzyFinder           " https://github.com/vim-scripts/FuzzyFinder
     " L9                    " http://www.vim.org/scripts/script.php?script_id=3252
     " YouCompleteMe         " https://github.com/Valloric/YouCompleteMe
@@ -16,11 +15,10 @@
     " nerdtree              " https://github.com/scrooloose/nerdtree
     " phpcomplete.vim       " https://github.com/shawncplus/phpcomplete.vim
     " syntastic             " https://github.com/scrooloose/syntastic
-    " taglist               " https://github.com/vim-scripts/taglist.vim
     " tComment              " https://github.com/tomtom/tcomment_vim
     " tlib_vim              " https://github.com/vim-scripts/tlib
     " vim-addon-mw-utils    " https://github.com/MarcWeber/vim-addon-mw-utils
-    " vim-ariline           " https://github.com/bling/vim-airline
+    " vim-airline           " https://github.com/bling/vim-airline
     " vim-buffer-explorer-plugin " http://www.vim.org/scripts/script.php?script_id=42
     " vim-fugitive          " https://github.com/tpope/vim-fugitive
     " vim-haml              " https://github.com/tpope/vim-haml
@@ -59,7 +57,6 @@
     " vim-multiple-cursors  " https://github.com/terryma/vim-multiple-cursors
     " PIV                   " https://github.com/spf13/PIV
     " vim-php-namespace     " https://github.com/arnaud-lb/vim-php-namespace
-    " checksyntax_vim       " https://github.com/tomtom/checksyntax_vim
  " not installed   " python-mode           " https://github.com/klen/python-mode
     " vim-json              " https://github.com/elzr/vim-json
     " vim-less              " https://github.com/groenewege/vim-less
@@ -100,11 +97,6 @@
         filetype on                 " try to detect filetypes
         filetype plugin indent on
         syntax on
-    " }
-
-    " Command-t
-    " {
-        " let g:CommandTMaxHeight=10
     " }
 
     " FuzzyFinder
@@ -169,21 +161,6 @@
         "let g:syntastic_auto_loc_list=1
     " }
     
-    " taglist
-    " {
-        " let Tlist_Auto_Highlight_Tag=0
-        let Tlist_Auto_Open=0             " TListToggle is open when a file is open
-        let Tlist_Use_Right_Window=1
-        let Tlist_Exit_OnlyWindow=1
-        " let Tlist_Show_One_File=1
-        " let Tlist_Sort_Type="name"
-        " let Tlist_Display_Prototype=1
-        " let Tlist_GainFocus_On_ToggleOpen=1
-        " let Tlist_Use_SingleClick=1
-        " let Tlist_WinHeight=20
-        " let Tlist_WinWidth=20
-    " }
-
     " vim-ariline
     " {
         let g:airline#extensions#syntastic#enabled = 1

@@ -6,7 +6,7 @@
  <F3>  ->   gundo or undotree
  <F4>  ->   mru to open last open files
  <F5>  ->   YouCompleteMe syntax check or just syntax check
- <F6>  ->   taglist or tagbar to show file summary
+ <F6>  ->   tagbar to show file summary
  <F7>  ->   toggles buggergator
  <F8>  ->
  <F9>  ->   debug, insert breakpoint
@@ -183,7 +183,7 @@
 <Leader-v>  ->
 <Leader-w>  ->
 <Leader-x>  ->
-<Leader-y>  ->  Command-T will start in projects directory folder
+<Leader-y>  ->
 <Leader-z>  ->
 <Leader-0>  ->   
 <Leader-1>  ->   

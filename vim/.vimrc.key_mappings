@@ -95,11 +95,6 @@
     " ===============================================================================
     " {
 
-        " CommandT keys
-        " {
-            map <Leader>y :CommandT ~/projects/<CR>
-        "}
-
         " FuzzyFinder
         " {
             map <Leader>i :FufFile ~/projects/<CR>
@@ -138,11 +133,6 @@
             nnoremap <F5> :SyntasticCheck<CR>
         " }
 
-        " taglist
-        " {
-            " nnoremap <F6> :taglist<CR>
-        " }
-        
         " buffergator
         " {
             nnoremap <F7> :BuffergatorToggle<CR>
