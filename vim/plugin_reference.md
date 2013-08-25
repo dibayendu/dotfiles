@@ -89,7 +89,7 @@
    Gundo Vim
 ================================================================================== */
 {
-    1.  F3                          " :GundoToggle
+    1.  F6                          " :GundoToggle
 }
 
 /* ==================================================================================
@@ -100,7 +100,6 @@
     2.  'o' key to open the file name under the cursor in the MRU window new window
     3.  MRU window in read-only mode (view), press the 'v' key
     4.  open in tab 't'
-    5. F3
 }
 
 /* ==================================================================================
@@ -117,7 +116,6 @@
     1.  SyntasticCheck
     2.  SyntasticInfo
     3.  SyntasticToggleMode
-    4.  F5
 }
 
 /* ==================================================================================
@@ -257,19 +255,10 @@
     all other runs of "$! $!" in the file.
 }
 
-
 /* ==================================================================================
-    xml-edit
+    xmledit
 ================================================================================== */
 {
-    <LocalLeader><Space>
-            Normal or Insert - Continue editing after the ending tag. This
-            option requires xml_jump_string to be set to function. When a tag
-            is completed it will append the xml_jump_string. Once this mapping
-            is ran it will delete the next xml_jump_string pattern to the right
-            of the curser and delete it leaving you in insert mode to continue
-            editing.
-
     <LocalLeader>w
             Normal - Will clear the entire file of left over xml_jump_string garbage.
             * This will also happen automatically when you save the file. *
@@ -288,28 +277,27 @@
     <LocalLeader>d
             Normal - Deletes the surrounding tags from the cursor. >
                 <tag1>outter <tag2>inner text</tag2> text</tag1>
-
 }
 
+/* ==================================================================================
+    xmledit
+================================================================================== */
+{
+    :TlistToggle            " toggles code summary
+}
 
 /* ==================================================================================
     ragtag
 ================================================================================== */
 {
-    inoremap <M-o>       <Esc>o
-    inoremap <C-j>       <Down>
-    
-    MAPPINGS                                        *ragtag-mappings*
+    # html / xhtml tags auto completion
 
-    The table below shows what happens if the binding is pressed on the end of a
-    line consisting of "foo".
-
-    Mapping       Changed to   (cursor = ^) ~
     <C-X>=        foo<%= ^ %>                               *ragtag-CTRL-X_=*
     <C-X>+        <%= foo^ %>                               *ragtag-CTRL-X_+*
     <C-X>-        foo<% ^ %>                                *ragtag-CTRL-X_-*
     <C-X>_        <% foo^ %>                                *ragtag-CTRL-X__*
     <C-X>'        foo<%# ^ %>                               *ragtag-CTRL-X_'*
+                (mnemonic: ' is a comment in ASP VBS)
     <C-X>"        <%# foo^ %>                               *ragtag-CTRL-X_quote*
     <C-X><Space>  <foo>^</foo>                              *ragtag-CTRL-X_<Space>*
     <C-X><CR>     <foo>\n^\n</foo>                          *ragtag-CTRL-X_<CR>*
@@ -320,243 +308,161 @@
     <C-X>#        <meta http-equiv="Content-Type" ... />    *ragtag-CTRL-X_#*
     <C-X>$        <script src="/javascripts/^.js"></script> *ragtag-CTRL-X_$*
                 (mnemonic: $ is valid in javascript identifiers)
-
-    For the bindings that generate HTML tag pairs, in a few cases, attributes will
-    be automatically added.  For example, script becomes >
-            <script type="text/javascript">
-    <
-                                                    *ragtag-CTRL-V_%*
-    <Plug>ragtagUrlV        URL encode the next character.
-    <C-V>%
-
-                                                    *ragtag-CTRL-V_&*
-    <Plug>ragtagXmlV        XML encode the next character.
-    <C-V>&
-
-                                                    *ragtag-CTRL-X_%*
-    <Plug>ragtagUrlEncode   Toggle a mode that automatically URL encodes unsafe
-    <C-X>%                  characters.
-
-                                                    *ragtag-CTRL-X_&*
-    <Plug>ragtagXmlEncode   Toggle a mode that automatically XML encodes unsafe
-    <C-X>&                  characters.
-
-    SURROUNDINGS                                    *ragtag-surroundings*
-
-    Combined with surround.vim, you also get three "replacements".  Below, the ^
-    indicates the location of the wrapped text.  See |surround| for details.
-
-    Character     Replacement ~
-    -             <% ^ %>
-    =             <%= ^ %>
-    #             <%# ^ %>
 }
 
-
 /* ==================================================================================
-    bundler
+    vim-bundler
 ================================================================================== */
 {
+    COMMANDS                                        *bundler-commands*
+
+                                                    *bundler-:Bundle*
     :Bundle[!] [args]       Invoke `bundle` via |:make|.
 
+                                                    *bundler-:Bopen*
     :Bopen[!] [gem]         With no argument, edits the Gemfile.  Otherwise,
                             effectively does a `bundle open` of a gem inside of
+                            Vim, including an |:lcd| to the gem's root directory.
+                            Add ! to discard the current buffer's changes.
+
+                                                    *bundler-:Bedit*
     :Bedit[!] [gem]         Like |:Bopen|, but don't |:lcd| afterwards.
 
+                                                    *bundler-:Bsplit*
     :Bsplit[!] [gem]        Like |:Bopen|, but horizontally split.  Add ! to
                             suppress the |:lcd|.
 
+                                                    *bundler-:Bvsplit*
     :Bvsplit[!] [gem]       Like |:Bopen|, but vertically split.  Add ! to
                             suppress the |:lcd|.
 
+                                                    *bundler-:Btabedit*
     :Btabedit[!] [gem]      Like |:Bopen|, but use a new tab.  Add ! to
                             suppress the |:lcd|.
 
+                                                    *bundler-:Bpedit*
     :Bpedit[!] [gem]        Like |:Bopen|, but use a preview window.  Add ! to
                             suppress the |:lcd|.
 }
 
-
 /* ==================================================================================
-    Buffergator
+    vim-bundler
 ================================================================================== */
 {
-    :BuffergatorOpen
-                        Open the buffer catalog, or go to it if it is already open.
+    Use `<Leader>b` (typically: `\b`) to open a window listing all buffers. In this
+    window, you can use normal movement keys to select a buffer and then:
 
-    :BuffergatorClose
-                        Close the buffer catalog if it is already open.
-
-    :BuffergatorToggle
-                        Open the buffer catalog if it is closed, or close it if
-                        it is already open.
-
-    :BuffergatorTabsOpen
-                        Open the tab page catalog, or go to it if it is already open.
-
-    :BuffergatorTabsClose
-                        Close the tab page catalog if it is already open.
-
-    :BuffergatorTabsToggle
-                        Open the tab page catalog if it is closed, or close it if
-                        it is already open.
-
-    <Leader>b           Invokes ":BuffergatorOpen": open the buffer catalog, or go
-                        to it if it is already open.
-
-    <Leader>B           Invokes ":BuffergatorClose": close the buffer catalog.
-
-    <Leader>t           Invokes ":BuffergatorTabsOpen": open the tab page catalog,
-                        or go to it if it is already open.
-
-    <Leader>T           Invokes ":BuffergatorTabsClose": close the tab page
-                        catalog.
-
-    [b, <M-B>           Invokes ":BuffergatorMruCyclePrev": cycle to an older
-                        buffer in the most-recently used (MRU) buffer list.
-                        most-recently used buffer. If
-                        "g:buffergator_mru_cycle_loop" is set to 1 (default), then
-                        this will loop, i.e. returning to the initial buffer after
-                        reaching the oldest buffer.
-
-    ]b, <M-S-B>         Invokes ":BuffergatorMruCycleNext": cycle to a newer
-                        buffer in the most-recently used (MRU) buffer list.
-                        most-recently used buffer. If
-                        "g:buffergator_mru_cycle_loop" is set to 1 (default), then
-                        this will loop, i.e. returning to the oldest buffer after
-                        reaching the newest buffer.
-
-}
-
-
-
-/* ==================================================================================
-    coffee-script
-================================================================================== */
-{
-    :CoffeeMake[!] {opts}	Wrapper around |:make| that also passes options in
-                            |g:coffee_make_options| to the compiler. Use |:silent|
-
-    :[range]CoffeeCompile [vertical] [{win-size}]
-                Shows how the current file or [range] is compiled
-                to JavaScript. [vertical] (or vert) splits the
-                compile buffer vertically instead of horizontally, and
-                {win-size} sets the initial size of the buffer. It can
-                be closed quickly with the "q" key.
-
-    :CoffeeCompile {watch} [vertical] [{win-size}]
-
-    :[range]CoffeeLint[!] {opts}
-                            Run {coffeelint} on the current file and add any
-                            errors to the quickfix list. The first error is jumped
-    :[range]CoffeeRun	Compiles the file or [range] and runs the resulting
-                JavaScript, displaying the output.
-}
-
-
-/* ==================================================================================
-    tagbar
-================================================================================== */
-{
-        :TagbarOpen [{flags}]                                            *:TagbarOpen*
-        :TagbarClose                                                    *:TagbarClose*
-        :TagbarToggle                                                  *:TagbarToggle*
-        :Tagbar
-        :TagbarOpenAutoClose                                    *:TagbarOpenAutoClose*
-        :TagbarTogglePause                                        *:TagbarTogglePause*
-        :TagbarSetFoldlevel[!] {number}                          *:TagbarSetFoldlevel*
-        :TagbarShowTag                                                *:TagbarShowTag*
-        :TagbarCurrentTag [{flags}]                                *:TagbarCurrentTag*
-        :TagbarGetTypeConfig {filetype}                         *:TagbarGetTypeConfig*
-        :TagbarDebug [logfile]                                          *:TagbarDebug*
-        :TagbarDebugEnd                                              *:TagbarDebugEnd*
-}
-
-
-/* ==================================================================================
-    jedi
-================================================================================== */
-{
-    This is a python ide settings.
-    look in the dot for all the required words.
-}
-
-
-
-/* ==================================================================================
-    easymotion
-================================================================================== */
-{
-    Mapping           | Details
-    ------------------|----------------------------------------------
-    <Leader>f{char}   | Find {char} to the right. See |f|.
-    <Leader>F{char}   | Find {char} to the left. See |F|.
-    <Leader>t{char}   | Till before the {char} to the right. See |t|.
-    <Leader>T{char}   | Till after the {char} to the left. See |T|.
-    <Leader>w         | Beginning of word forward. See |w|.
-    <Leader>W         | Beginning of WORD forward. See |W|.
-    <Leader>b         | Beginning of word backward. See |b|.
-    <Leader>B         | Beginning of WORD backward. See |B|.
-    <Leader>e         | End of word forward. See |e|.
-    <Leader>E         | End of WORD forward. See |E|.
-    <Leader>ge        | End of word backward. See |ge|.
-    <Leader>gE        | End of WORD backward. See |gE|.
-    <Leader>j         | Line downward. See |j|.
-    <Leader>k         | Line upward. See |k|.
-    <Leader>n         | Jump to latest "/" or "?" forward. See |n|.
-    <Leader>N         | Jump to latest "/" or "?" backward. See |N|.
-}
-
-
-/* ==================================================================================
-    neocomplcache
-================================================================================== */
-{
-    :NeoComplCacheToggle
-
-    read doc, lots to be found there.
+    - <ENTER> to edit the selected buffer in the previous window
+    - <C-V> to edit the selected buffer in a new vertical split
+    - <C-S> to edit the selected buffer in a new horizontal split
+    - <C-T> to edit the selected buffer in a new tab page
 }
 
 /* ==================================================================================
-    tabularise
+    vim-coffee-script
 ================================================================================== */
 {
-    :Tabularize /,
+    :[silent] CoffeeMake[!] [COFFEE-OPTIONS]...
+        By default, CoffeeMake shows all compiler output and jumps to the first line reported as an error by coffee:
+
+    :CoffeeMake
+        Compiler output can be hidden with silent:
+
+    :silent CoffeeMake
+        Line-jumping can be turned off by adding a bang:
+
+    :CoffeeMake!
+        Options given to CoffeeMake are passed along to coffee:
+
+    :CoffeeMake --bare
+        CoffeeMake can be manually loaded for a file with:
+
+    :compiler coffee
 }
 
-
 /* ==================================================================================
-    tabularise
+    vim-nerdtree-tabs
 ================================================================================== */
 {
-    ASYNCHROUNOUS TESTS CAN BE WRITTERN HERE.
+    :NERDTreeTabsOpen switches NERDTree on for all tabs.
 
-    :Make [arguments]       Using the current |:compiler| settings, dispatch a
-    :Make! [arguments]      Using the current compiler settings, dispatch a build
-    :Copen                  Load the latest build into the quickfix list and open
-    :Copen!                 Load the latest build into the quickfix list using a
-    :Dispatch[!] {program} [arguments]
-    :Dispatch[!]            Invoke |:Dispatch| with the command and arguments
-    :FocusDispatch {program} [arguments]
-    :FocusDispatch! {program} [arguments]
-    :FocusDispatch!         Clear the global and window local defaults for
-    :FocusDispatch          Show the task that would run when calling |:Dispatch|
-    :Start {command}        Start a process in a new, focused window.
-    :Start! {command}       Start a process in a new, unfocused window.
-    :Start[!]               With no arguments, |:Start| the command given by
-    :Start[!] -title={title} {command}
+    :NERDTreeTabsClose switches NERDTree off for all tabs.
+
+    :NERDTreeTabsToggle toggles NERDTree on/off for all tabs.
+
+    :NERDTreeMirrorOpen acts as :NERDTreeMirror, but smarter: When opening, it first tries to use an existing tree (i.e. previously closed in this tab or perform a mirror of another tab's tree). If all this fails, a new tree is created. It is recommended that you use this command instead of :NERDTreeMirror.
+
+    :NERDTreeMirrorToggle toggles NERDTree on/off in current tab, using the same behavior as :NERDTreeMirrorOpen.
+
+    :NERDTreeSteppedOpen focuses the NERDTree, opening one first if none is present.
+
+    :NERDTreeSteppedClose unfocuses the NERDTree, or closes/hides it if it was not focused.
+
 }
 
-
 /* ==================================================================================
-    Abolish
+    Tagbar
 ================================================================================== */
 {
-    Abolish lets you quickly find, substitute, and abbreviate several variations
-    of a word at once.  By default, three case variants (foo, Foo, and FOO) are
-    operated on by every command.
+    :TagbarOpen [{flags}]                                            *:TagbarOpen*
+            :TagbarOpen fj
 
-    Two commands are provided.  :Abolish is the most general interface.
-    :Subvert provides an alternative, more concise syntax for searching and
-    substituting.
+    :TagbarClose                                                    *:TagbarClose*
+        Close the Tagbar window if it is open.
+
+    :TagbarToggle                                                  *:TagbarToggle*
+    :Tagbar
+        Open the Tagbar window if it is closed, or close it if it is open.
+
+    :TagbarTogglePause                                        *:TagbarTogglePause*
+
+    :TagbarSetFoldlevel[!] {number}                          *:TagbarSetFoldlevel*
+
+    :TagbarShowTag                                                *:TagbarShowTag*
+
+    :TagbarCurrentTag [{flags}]                                *:TagbarCurrentTag*
+}
+
+/* ==================================================================================
+    vim-easymotion
+================================================================================== */
+{
+    <Leader><Leader>t
+
+
+    <Leader><Leader>w           " trigger the word motion w
+
+    <Leader><Leader>fo, and all "o" characters are highlighted:
+}
+
+/* ==================================================================================
+    undotree
+================================================================================== */
+{
+    :UndotreeToggle
+
+}
+
+/* ==================================================================================
+    tabularize
+================================================================================== */
+{
+    :Tabularize /<parenthesis>
+
+}
+
+/* ==================================================================================
+    vim-dispatch
+================================================================================== */
+{
+    read documentation
+
+}
+
+/* ==================================================================================
+    vim-abolish
+================================================================================== */
+{
+    read documentation
+
 }
