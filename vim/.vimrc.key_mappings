@@ -44,7 +44,7 @@
         " mapping vim keys with consistent keys across most applications
             " nmap <C-h> :nohl<cr> " no highlighting
             imap <C-l> :<Space>
-            nmap <C-s> <Right><esc>:wa<CR>  " save all buffers
+            nmap <C-s> <esc>:wa<CR>  " save all buffers
             imap <C-s> <Right><esc>:wa<CR>
             "nmap <C-w> <esc>:q<CR>   " quit current buffer , CAREFULL used to move between windows
             "imap <C-w> <esc>:q<CR>
@@ -138,7 +138,7 @@
             nnoremap <F7> :BuffergatorToggle<CR>
         " }
 
-        " taglist
+        " tagbar
         " {
             nnoremap <silent> <F6> :TagbarToggle<CR>
         "}

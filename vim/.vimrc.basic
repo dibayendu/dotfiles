@@ -37,7 +37,8 @@
 
     " relative numbers and absolute numbers
     " {
-        " set number            " line numbers
+        set number            " line numbers
+        autocmd FocusGained * :set number
         autocmd FocusLost * :set number
         autocmd InsertEnter * :set number
         autocmd InsertLeave * :set relativenumber
@@ -114,7 +115,6 @@
         set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
         set ruler                   " Show some info, even without statuslines.
         set laststatus=2            " Always show statusline, even if only 1 window.
-        set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
 
     " Show hidden chars
     " displays tabs with :set list & displays when a line runs off-screen

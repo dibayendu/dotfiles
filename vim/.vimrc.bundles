@@ -78,6 +78,7 @@ set nocompatible               " be iMproved
         Bundle 'sukima/xmledit/'
         Bundle 'tpope/vim-pathogen'
         Bundle 'elzr/vim-json'
+        Bundle 'cakebaker/scss-syntax.vim'
         " Bundle 'Valloric/YouCompleteMe'
         " Bundle 'klen/python-mode'
         " Bundle 'Shougo/neocomplete.vim'

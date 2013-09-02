@@ -118,14 +118,14 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
     # https://github.com/magicmonty/bash-git-prompt
     # The command below shows a prompt which contains git branch and other git info
     # {
-        source ~/dibayendu/repositories/dotfiles/bash/gitprompt.sh
+        # source ~/dibayendu/repositories/dotfiles/bash/gitprompt.sh
     # }
 
     # this is from powerline for bash
     # . /Users/fridaymedia/powerline/powerline/bindings/bash/powerline.sh
 
     # The command below shows only the git branch
-    # PS1="$NewLine$Purple\[\342\224\214\342\224\200\]\$([[ \$? != 0 ]] && echo \"$Color_Off [$Color_Off$On_Red\[\342\234\227\] $Last_Command$Color_Off]\") $Cyan$Date $Red- $Purple$Time12h $Yellow$User$BRed@$Green$Host $Cyan[$Color_Off$On_IBlack\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$Cyan]$NewLine$Purple\[\342\224\224\]> $Red[$Color_Off$On_Blue$PathShort$Red] $Color_Off\$ "
+    PS1="$NewLine$Purple\[\342\224\214\342\224\200\]\$([[ \$? != 0 ]] && echo \"$Color_Off [$Color_Off$On_Red\[\342\234\227\] $Last_Command$Color_Off]\") $Cyan$Date $Red- $Purple$Time12h $Yellow$User$BRed@$Green$Host $Cyan[$Color_Off$On_IBlack\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$Cyan]$NewLine$Purple\[\342\224\224\]> $Red[$Color_Off$On_Blue$PathShort$Red] $Color_Off\$ "
 
     # PS1="$NewLine$Purple\[\342\224\214\342\224\200\]\$([[ \$? != 0 ]] && echo \"$Color_Off [$On_IRed\[\342\234\227\] $Last_Command$Color_Off]\") $Cyan$Date $Red- $Purple$Time12h $Yellow$User$BRed@$Green$Host $Cyan[$On_IBlack\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$Cyan]$NewLine$Purple\[\342\224\224\]> $Red[$On_IBlue$PathShort$Red] $Color_Off\$ "
 
@@ -188,6 +188,16 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
         fi
         source "$fasd_cache"
         unset fasd_cache
+
+    # tmux copy in clipboard
+    # {
+        # while true; do
+        # if test -n "`tmux showb 2> /dev/null`"; then
+        #     tmux saveb -|pbcopy && tmux deleteb
+        # fi
+        # sleep 0.5
+        # done
+    # }
 # }
 
 # ===================================================================================
@@ -284,8 +294,11 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
         # alias pacro="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rs \$(/usr/bin/pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')"
     # }
 
+    alias tmux_copy_keys=' tmux list-keys -t vi-copy'
     alias find='find . -name'
     alias readonly_vim='vim -R -M'
+    alias vim='vim -u ~/dibayendu/repositories/dotfiles/vim/.vimrc.basic'
+    alias vim_ide='vim -u ~/dibayendu/repositories/dotfiles/vim/.vimrc'
     alias c='clear'
     alias php_error='tail -f /Applications/MAMP/logs/php_error.log & '
     alias apache_error='tail -f /Applications/MAMP/logs/apache_error.log & '
