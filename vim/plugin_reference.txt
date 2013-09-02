@@ -1,3 +1,24 @@
+/* ==================================================================================
+    Vim folding commands
+================================================================================== */
+{
+    zi	switch folding on or off
+    zv	expand folds to reveal cursor
+    zj  move down to top of next fold
+    zk  move up to bottom of previous fold
+    zo  open current fold
+    zO  recursively open current fold
+    zc  close current fold
+    zC  recursively close current fold
+    za  toggle current fold
+    zA  recursively open/close current fold
+    zm  reduce `foldlevel` by one
+    zM  close all folds
+    zr  increase `foldlevel` by one
+    zR  open all folds
+}
+
+/* ==================================================================================
     Fuzzy-Finder
 ================================================================================== */
 {
@@ -69,6 +90,7 @@
 ================================================================================== */
 {
     1.  F3                          " :GundoToggle
+    :UndotreeToggle
 }
 
 /* ==================================================================================
@@ -79,7 +101,7 @@
     2.  'o' key to open the file name under the cursor in the MRU window new window
     3.  MRU window in read-only mode (view), press the 'v' key
     4.  open in tab 't'
-    5. F3
+    5. F4
 }
 
 /* ==================================================================================
@@ -241,6 +263,8 @@
     xml-edit
 ================================================================================== */
 {
+    :TlistToggle            " toggles code summary
+
     <LocalLeader><Space>
             Normal or Insert - Continue editing after the ending tag. This
             option requires xml_jump_string to be set to function. When a tag
@@ -353,6 +377,14 @@
 
     :Bpedit[!] [gem]        Like |:Bopen|, but use a preview window.  Add ! to
                             suppress the |:lcd|.
+
+    Use `<Leader>b` (typically: `\b`) to open a window listing all buffers. In this
+    window, you can use normal movement keys to select a buffer and then:
+
+    - <ENTER> to edit the selected buffer in the previous window
+    - <C-V> to edit the selected buffer in a new vertical split
+    - <C-S> to edit the selected buffer in a new horizontal split
+    - <C-T> to edit the selected buffer in a new tab page
 }
 
 
@@ -430,6 +462,23 @@
                             errors to the quickfix list. The first error is jumped
     :[range]CoffeeRun	Compiles the file or [range] and runs the resulting
                 JavaScript, displaying the output.
+
+    :[silent] CoffeeMake[!] [COFFEE-OPTIONS]...
+        By default, CoffeeMake shows all compiler output and jumps to the first line reported as an error by coffee:
+
+    :CoffeeMake
+        Compiler output can be hidden with silent:
+
+    :silent CoffeeMake
+        Line-jumping can be turned off by adding a bang:
+
+    :CoffeeMake!
+        Options given to CoffeeMake are passed along to coffee:
+
+    :CoffeeMake --bare
+        CoffeeMake can be manually loaded for a file with:
+
+    :compiler coffee
 }
 
 
@@ -501,11 +550,12 @@
 ================================================================================== */
 {
     :Tabularize /,
+    :Tabularize /<parenthesis>
 }
 
 
 /* ==================================================================================
-    tabularise
+    vim-repeat
 ================================================================================== */
 {
     ASYNCHROUNOUS TESTS CAN BE WRITTERN HERE.
@@ -538,4 +588,68 @@
     Two commands are provided.  :Abolish is the most general interface.
     :Subvert provides an alternative, more concise syntax for searching and
     substituting.
+}
+
+/* ==================================================================================
+    vim-ruby-refactoring
+================================================================================== */
+{
+    :RAddParameter           - Add Parameter 
+    :RInlineTemp             - Inline Temp
+    :RConvertPostConditional - Convert Post Conditional
+    :RExtractConstant        - Extract Constant          (visual selection)
+    :RExtractLet             - Extract to Let (Rspec)
+    :RExtractLocalVariable   - Extract Local Variable    (visual selection)
+    :RRenameLocalVariable    - Rename Local Variable     (visual selection/variable under the cursor, *REQUIRES matchit.vim*)
+    :RRenameInstanceVariable - Rename Instance Variable  (visual selection, *REQUIRES matchit.vim*)
+    :RExtractMethod          - Extract Method            (visual selection, *REQUIRES matchit.vim*)
+
+    :nnoremap <leader>rap  :RAddParameter<cr>
+    :nnoremap <leader>rcpc :RConvertPostConditional<cr>
+    :nnoremap <leader>rel  :RExtractLet<cr>
+    :vnoremap <leader>rec  :RExtractConstant<cr>
+    :vnoremap <leader>relv :RExtractLocalVariable<cr>
+    :nnoremap <leader>rit  :RInlineTemp<cr>
+    :vnoremap <leader>rrlv :RRenameLocalVariable<cr>
+    :vnoremap <leader>rriv :RRenameInstanceVariable<cr>
+    :vnoremap <leader>rem  :RExtractMethod<cr>
+}
+
+/* ==================================================================================
+    coveragepy.vim
+================================================================================== */
+{
+    :Coveragepy report
+    :Coveragepy session
+    :Coveragepy show
+    :Coveragepy version
+}
+
+/* ==================================================================================
+    DirDiff.vim
+================================================================================== */
+{
+    :DirDiff <A:Src Directory> <B:Src Directory> 
+    e.g. 
+        :DirDiff ../something/dir1 /usr/bin/somethingelse/dir2 
+}
+
+/* ==================================================================================
+    vim-nerdtree-tabs
+================================================================================== */
+{
+    :NERDTreeTabsOpen switches NERDTree on for all tabs.
+
+    :NERDTreeTabsClose switches NERDTree off for all tabs.
+
+    :NERDTreeTabsToggle toggles NERDTree on/off for all tabs.
+
+    :NERDTreeMirrorOpen acts as :NERDTreeMirror, but smarter: When opening, it first tries to use an existing tree (i.e. previously closed in this tab or perform a mirror of another tab's tree). If all this fails, a new tree is created. It is recommended that you use this command instead of :NERDTreeMirror.
+
+    :NERDTreeMirrorToggle toggles NERDTree on/off in current tab, using the same behavior as :NERDTreeMirrorOpen.
+
+    :NERDTreeSteppedOpen focuses the NERDTree, opening one first if none is present.
+
+    :NERDTreeSteppedClose unfocuses the NERDTree, or closes/hides it if it was not focused.
+
 }

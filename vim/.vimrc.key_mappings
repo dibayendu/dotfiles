@@ -46,6 +46,7 @@
             imap <C-l> :<Space>
             nmap <C-s> <esc>:wa<CR>  " save all buffers
             imap <C-s> <Right><esc>:wa<CR>
+            imap <esc> <esc><esc><esc>
             "nmap <C-w> <esc>:q<CR>   " quit current buffer , CAREFULL used to move between windows
             "imap <C-w> <esc>:q<CR>
             nmap <Leader>w <esc>:q<CR>   " quit current buffer , CAREFULL used to move between windows

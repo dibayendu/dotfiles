@@ -397,6 +397,28 @@
         let g:PIVAutoClose = 0
     " }
 
+    " vim-json
+    " {
+        let g:vim_json_syntax_conceal = 1
+    " }
+
+    " vim-less
+    " {
+        nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
+    " }
+    
+    " vim-ruby-refactoring
+    " {
+        let g:ruby_refactoring_map_keys = 1
+    " }
+
+    " emmet-vim
+    " {
+        let g:user_emmet_mode='a'    "enable all function in all mode.
+    " }
+
+
+
 
 
 
