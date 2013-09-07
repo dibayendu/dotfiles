@@ -178,6 +178,25 @@
             noremap <Leader>u :call PhpInsertUse()<CR>
         " }
 
+        " gitv
+        " {
+            nmap <leader>gv :Gitv --all<cr>
+            nmap <leader>gV :Gitv! --all<cr>
+            vmap <leader>gV :Gitv! --all<cr>
+        " }
+
+        " unite-outline
+        " {
+            imap <F8> <Right><esc>:Unite outline<CR>
+            nmap <F8> :Unite outline<CR>
+        " }
+
+
+
+
+
+
+
 
 
 

@@ -8,7 +8,7 @@
  <F5>  ->   YouCompleteMe syntax check or just syntax check
  <F6>  ->   tagbar to show file summary
  <F7>  ->   toggles buggergator
- <F8>  ->
+ <F8>  ->   :Unite outline
  <F9>  ->   debug, insert breakpoint
 <F10>  ->   debug, step over
 <F11>  ->   debug, step into

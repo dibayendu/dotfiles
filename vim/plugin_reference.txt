@@ -37,16 +37,6 @@
 }
 
 /* ==================================================================================
-   YouCompleteMe 
-================================================================================== */
-{
-    1.  F5                          " recompiles file 
-    2.  :YcmShowDetailedDiagnostic command
-    3.  :YcmDebugInfo
-    4.  <Tab>, <Up>, <Down> for selection
-}
-
-/* ==================================================================================
    ack.vim
 ================================================================================== */
 {
@@ -652,4 +642,46 @@
 
     :NERDTreeSteppedClose unfocuses the NERDTree, or closes/hides it if it was not focused.
 
+}
+
+/* ==================================================================================
+    gitv
+================================================================================== */
+{
+    :[range]Gitv[!] [args]
+    <leader>gv :Gitv --all<cr>
+    <leader>gV :Gitv! --all<cr>
+    <leader>gV :Gitv! --all<cr>
+
+    LOOK INTO DOCUMENTATION FILE FOR MORE INFORMATION.
+}
+
+* ==================================================================================
+    virtualenv
+================================================================================== */
+{
+    :VirtualEnvList                                  *:VirtualEnvList*
+        List all available virtualenvs.
+
+    :VirtualEnvDeactivate                            *:VirtualEnvDeactivate*
+        Deactivate the current virtualenv.
+
+    :VirtualEnvActivate [name]                       *:VirtualEnvActivate*
+        Activate a virtualenv. The name of the virtualenv can be completed with
+        <tab> at the command line.
+}
+
+* ==================================================================================
+    vim-characterize
+================================================================================== */
+{
+    ga                      Print the unicode value of the character under the
+                        cursor
+}
+
+* ==================================================================================
+    unite-outline
+================================================================================== */
+{
+    :Unite outline
 }
