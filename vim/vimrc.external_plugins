@@ -69,16 +69,16 @@
     " JSON.vim              " https://github.com/vim-scripts/JSON.vim
     " vim-tmux              " https://github.com/vimez/vim-tmux
     " neobundle.vim         " https://github.com/Shougo/neobundle.vim
- " not installed   " python-mode           " https://github.com/klen/python-mode
-" not installed    " neocomplete           " https://github.com/Shougo/neocomplete.vim cause it requires vim to compile with +lua
-" not installed    " ultisnips             " https://github.com/SirVer/ultisnips
     " scss-syntax.vim       " https://github.com/cakebaker/scss-syntax.vim
     " vim-virtualenv        " https://github.com/jmcantrell/vim-virtualenv
     " vim-characterize      " https://github.com/tpope/vim-characterize
     " unite-outline         " https://github.com/Shougo/unite-outline
-    " unite.vim             " https://github.com/Shougo/unite.vim
     " vim-abolish           " https://github.com/tpope/vim-abolish
     " vim-repeat            " https://github.com/tpope/vim-repeat
+    " unite.vim             " https://github.com/Shougo/unite.vim
+" not installed    " python-mode           " https://github.com/klen/python-mode
+" not installed    " neocomplete           " https://github.com/Shougo/neocomplete.vim cause it requires vim to compile with +lua
+" not installed    " ultisnips             " https://github.com/SirVer/ultisnips
 
     " PATHOGEN NEEDS TO BE LOADED FIRST
     " Pathogen
@@ -166,6 +166,8 @@
     " {
         let g:airline#extensions#syntastic#enabled = 1
         let g:airline#extensions#tagbar#enabled = 1
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline_inactive_collapse=1
         " old vim-powerline symbols
             let g:airline_left_sep = '⮀'
             let g:airline_left_alt_sep = '⮁'
@@ -419,7 +421,7 @@
 
     " gitv                  " https://github.com/gregsexton/gitv
     " {
-        set lazyredraw      
+        " set lazyredraw
     " }
 
     " JSON.vim
@@ -427,10 +429,11 @@
         au! BufRead,BufNewFile *.json set filetype=json 
     " }
 
-
-
-
-
+    " vim-repeat
+    " {
+        " Adding support to a plugin is generally as simple as the following command at the end of your map functions.
+        " silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+    " }
 
     " indentLine plugin
     " {
@@ -445,5 +448,8 @@
         let NERDTreeIgnore=['\.pyc$']
     "}
 
+    " unite.vim
+    " {
+        
+    " }
 " }
-

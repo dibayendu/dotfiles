@@ -118,7 +118,8 @@
 
     " Show hidden chars
     " displays tabs with :set list & displays when a line runs off-screen
-        set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
+        " set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
+        set list listchars=tab:»-,trail:·,extends:»,precedes:«
         " set listchars=tab:→\ ,eol:↵,trail:·,extends:↷,precedes:↶
         "set list
 
@@ -138,7 +139,7 @@
             set guioptions-=T
         endif
 
-    set lazyredraw              " only redraws if it is needed
+    " set lazyredraw              " only redraws if it is needed
     set ttyfast                 " better screen redraw
     set splitright              " always split right
     set splitbelow              " always split below

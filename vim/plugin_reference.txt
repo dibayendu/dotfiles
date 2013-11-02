@@ -541,6 +541,9 @@
 {
     :Tabularize /,
     :Tabularize /<parenthesis>
+
+    watch the video below for more knowlege
+    http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 }
 
 
@@ -684,4 +687,47 @@
 ================================================================================== */
 {
     :Unite outline
+}
+
+* ==================================================================================
+    vim-abolish
+================================================================================== */
+{
+    :Abolish [options] {abbreviation} {replacement}
+	:Abolish -delete [options] {abbreviation}
+
+	:Abolish -search [options] {pattern}
+	:Subvert/{pattern}[/flags]
+	:Abolish!-search [options] {pattern}
+	:Subvert?{pattern}[?flags]
+
+	:Abolish -search [options] {pattern} {grep-arguments}
+	:Subvert /{pattern}/[flags] {grep-options}
+	:Abolish!-search [options] {pattern} {grep-arguments}
+	:Subvert!/{pattern}/[flags] {grep-options}
+
+	:[range]Abolish -substitute [options] {pattern} {replacement}
+	:[range]Subvert/{pattern}/{replacement}[/flags]
+}
+
+* ==================================================================================
+    vim-abolish
+================================================================================== */
+{
+    To browse a list of currently open buffers like |:ls| command.
+        :Unite buffer
+
+    To browse a list of files in the current working directory.
+        :Unite file
+
+    To browse recursive list of all the files under the current working
+    directory.
+        :Unite file_rec
+
+    Or you can combine sources, to browse files and buffers.
+        :Unite file buffer
+
+    There are a number of command line flags(see |unite-options|), for
+    example to set an initial search term (foo) to filter files search.
+        :Unite -input=foo file
 }
