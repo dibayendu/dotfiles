@@ -2,25 +2,13 @@
 " External plugins
 " ===================================================================================
 " {
-    " Pathogen              " https://github.com/tpope/vim-pathogen 
+    " THE FOLLOWING PLUGINS ARE UNUSED
     " FuzzyFinder           " https://github.com/vim-scripts/FuzzyFinder
-    " L9                    " http://www.vim.org/scripts/script.php?script_id=3252
     " YouCompleteMe         " https://github.com/Valloric/YouCompleteMe
-    " ack.vim               " https://github.com/mileszs/ack.vim 
     " conqueterm-vim        " https://code.google.com/p/conque/
-    " ctrlp.vim             " https://github.com/kien/ctrlp.vim
-    " gundo.vim             " https://github.com/sjl/gundo.vim
-    " indentLine            " https://github.com/Yggdroot/indentLine
-    " mru.vim               " https://github.com/vim-scripts/mru.vim
-    " nerdtree              " https://github.com/scrooloose/nerdtree
     " phpcomplete.vim       " https://github.com/shawncplus/phpcomplete.vim
     " syntastic             " https://github.com/scrooloose/syntastic
-    " tComment              " https://github.com/tomtom/tcomment_vim
-    " tlib_vim              " https://github.com/vim-scripts/tlib
-    " vim-addon-mw-utils    " https://github.com/MarcWeber/vim-addon-mw-utils
-    " vim-airline           " https://github.com/bling/vim-airline
     " vim-buffer-explorer-plugin " http://www.vim.org/scripts/script.php?script_id=42
-    " vim-fugitive          " https://github.com/tpope/vim-fugitive
     " vim-haml              " https://github.com/tpope/vim-haml
     " vim-javascript        " https://github.com/pangloss/vim-javascript
     " vim-rails             " https://github.com/tpope/vim-rails/tree/master/doc
@@ -29,8 +17,6 @@
     " vim-sensible          " https://github.com/tpope/vim-sensible
     " vim-snipmate          " https://github.com/garbas/vim-snipmate
     " vim-snippets          " https://github.com/honza/vim-snippets
-    " vim-surround          " https://github.com/tpope/vim-surround
-    " vim-visual-star-search " https://github.com/bronson/vim-visual-star-search
     " xmledit               " https://github.com/sukima/xmledit/
     " vim-cucumber          " https://github.com/tpope/vim-cucumber
     " vim-endwise           " https://git@github.com:tpope/vim-endwise
@@ -38,23 +24,13 @@
     " vim-markdown          " https://github.com/plasticboy/vim-markdown
     " vim-ragtag            " https://github.com/tpope/vim-ragtag
     " vim-bundler           " https://github.com/tpope/vim-bundler
-    " vim-buffergator       " https://github.com/jeetsukumaran/vim-buffergator
     " vim-coffee-script     " https://github.com/kchmck/vim-coffee-script
     " vim-jquery            " https://github.com/itspriddle/vim-jquery
     " vim-nerd-tree-tabs    " https://github.com/jistr/vim-nerdtree-tabs
-    " tagbar                " https://github.com/majutsushi/tagbar
-    " jedi-vim              " https://github.com/davidhalter/jedi-vim
-    " vim-easymotion        " https://github.com/Lokaltog/vim-easymotion
-    " vim-colors-solarized  " git://github.com/altercation/vim-colors-solarized.git    
     " neocomplcache.vim     " https://github.com/Shougo/neocomplcache.vim
     " neosnippet.vim        " https://github.com/Shougo/neosnippet.vim
-    " vim-autoclose         " https://github.com/Townk/vim-autoclose
-    " undotree              " https://github.com/mbbill/undotree
-    " tabular               " https://github.com/godlygeek/tabular
-    " vim-repeat            " https://github.com/tpope/vim-repeat
     " vim-dispatch          " https://github.com/tpope/vim-dispatch
     " vim-abolish           " https://github.com/tpope/vim-abolish
-    " vim-multiple-cursors  " https://github.com/terryma/vim-multiple-cursors
     " PIV                   " https://github.com/spf13/PIV
     " vim-php-namespace     " https://github.com/arnaud-lb/vim-php-namespace
     " vim-json              " https://github.com/elzr/vim-json
@@ -63,22 +39,48 @@
     " vim-css3-syntax       " https://github.com/hail2u/vim-css3-syntax
     " vim-ruby-refactoring  " https://github.com/ecomba/vim-ruby-refactoring
     " coveragepy.vim        " https://github.com/alfredodeza/coveragepy.vim
-    " DirDiff.vim           " https://github.com/joedicastro/DirDiff.vim
     " emmet-vim             " https://github.com/mattn/emmet-vim
-    " gitv                  " https://github.com/gregsexton/gitv
     " JSON.vim              " https://github.com/vim-scripts/JSON.vim
-    " vim-tmux              " https://github.com/vimez/vim-tmux
     " neobundle.vim         " https://github.com/Shougo/neobundle.vim
     " scss-syntax.vim       " https://github.com/cakebaker/scss-syntax.vim
     " vim-virtualenv        " https://github.com/jmcantrell/vim-virtualenv
     " vim-characterize      " https://github.com/tpope/vim-characterize
     " unite-outline         " https://github.com/Shougo/unite-outline
-    " vim-abolish           " https://github.com/tpope/vim-abolish
-    " vim-repeat            " https://github.com/tpope/vim-repeat
     " unite.vim             " https://github.com/Shougo/unite.vim
 " not installed    " python-mode           " https://github.com/klen/python-mode
 " not installed    " neocomplete           " https://github.com/Shougo/neocomplete.vim cause it requires vim to compile with +lua
 " not installed    " ultisnips             " https://github.com/SirVer/ultisnips
+
+
+    " THE FOLLWING PLUGINS ARE USED
+    " Pathogen              " https://github.com/tpope/vim-pathogen 
+    " L9                    " http://www.vim.org/scripts/script.php?script_id=3252
+    " ack.vim               " https://github.com/mileszs/ack.vim 
+    " ctrlp.vim             " https://github.com/kien/ctrlp.vim
+    " gundo.vim             " https://github.com/sjl/gundo.vim
+    " indentLine            " https://github.com/Yggdroot/indentLine
+    " mru.vim               " https://github.com/vim-scripts/mru.vim
+    " nerdtree              " https://github.com/scrooloose/nerdtree
+    " tComment              " https://github.com/tomtom/tcomment_vim
+    " tlib_vim              " https://github.com/vim-scripts/tlib
+    " vim-addon-mw-utils    " https://github.com/MarcWeber/vim-addon-mw-utils
+    " vim-airline           " https://github.com/bling/vim-airline
+    " vim-fugitive          " https://github.com/tpope/vim-fugitive
+    " vim-surround          " https://github.com/tpope/vim-surround
+    " vim-visual-star-search " https://github.com/bronson/vim-visual-star-search
+    " vim-buffergator       " https://github.com/jeetsukumaran/vim-buffergator
+    " jedi-vim              " https://github.com/davidhalter/jedi-vim
+    " vim-easymotion        " https://github.com/Lokaltog/vim-easymotion
+    " vim-colors-solarized  " git://github.com/altercation/vim-colors-solarized.git    
+    " vim-tomorrow-night  " https://github.com/chriskempson/vim-tomorrow-theme
+    " undotree              " https://github.com/mbbill/undotree
+    " tabular               " https://github.com/godlygeek/tabular
+    " vim-repeat            " https://github.com/tpope/vim-repeat
+    " vim-multiple-cursors  " https://github.com/terryma/vim-multiple-cursors
+    " DirDiff.vim           " https://github.com/joedicastro/DirDiff.vim
+    " gitv                  " https://github.com/gregsexton/gitv
+    " vim-tmux              " https://github.com/vimez/vim-tmux
+    " vim-autoclose         " https://github.com/Townk/vim-autoclose
 
     " PATHOGEN NEEDS TO BE LOADED FIRST
     " Pathogen
@@ -100,67 +102,67 @@
         syntax on
     " }
 
-    " FuzzyFinder
-    " {
-       let g:fuf_mrufile_exclude = '' 
-        let g:fuf_modesDisable = []
-        let g:fuf_mrufile_maxItem = 400
-        let g:fuf_mrucmd_maxItem = 400
-    " }
+    " " FuzzyFinder
+    " " {
+    "    let g:fuf_mrufile_exclude = '' 
+    "     let g:fuf_modesDisable = []
+    "     let g:fuf_mrufile_maxItem = 400
+    "     let g:fuf_mrucmd_maxItem = 400
+    " " }
 
-    " YouCompleteMe plugin
-    " {
-        let g:ycm_confirm_extra_conf=''
-        let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-        let g:ycm_complete_in_comments=0
-        let g:ycm_complete_in_strings=0
-        let g:ycm_collect_identifiers_from_comments_and_strings=0
-        let g:ycm_min_num_of_chars_for_completion=1
-        let g:ycm_register_as_syntastic_checker=1
-        let g:ycm_filepath_completion_use_working_dir=1
-        let g:ycm_cache_omnifunc=1
-        let g:ycm_key_invoke_completion='<C-Space>'
-        let g:ycm_autoclose_preview_window_after_completion=1
-        " let g:ycm_autoclose_preview_window_after_insertion=1
-        let g:ycm_add_preview_to_completeopt=1
-        let g:ycm_collect_identifiers_from_tags_files=1
-        let g:ycm_seed_identifiers_with_syntax=1
-        let g:ycm_key_list_select_completion=['<TAB>', '<Down>']
-        let g:ycm_key_list_previous_completion=['<S-TAB>', '<Up>']
-        let g:ycm_semantic_triggers= {
-          \   'c' : ['->', '.'],
-          \   'objc' : ['->', '.'],
-          \   'ocaml' : ['.', '#'],
-          \   'cpp,objcpp' : ['->', '.', '::'],
-          \   'perl' : ['->'],
-          \   'php' : ['->', '::'],
-          \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
-          \   'ruby' : ['.', '::'],
-          \   'lua' : ['.', ':'],
-          \   'erlang' : [':'],
-          \ }
-    " }
+    " " YouCompleteMe plugin
+    " " {
+    "     let g:ycm_confirm_extra_conf=''
+    "     let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+    "     let g:ycm_complete_in_comments=0
+    "     let g:ycm_complete_in_strings=0
+    "     let g:ycm_collect_identifiers_from_comments_and_strings=0
+    "     let g:ycm_min_num_of_chars_for_completion=1
+    "     let g:ycm_register_as_syntastic_checker=1
+    "     let g:ycm_filepath_completion_use_working_dir=1
+    "     let g:ycm_cache_omnifunc=1
+    "     let g:ycm_key_invoke_completion='<C-Space>'
+    "     let g:ycm_autoclose_preview_window_after_completion=1
+    "     " let g:ycm_autoclose_preview_window_after_insertion=1
+    "     let g:ycm_add_preview_to_completeopt=1
+    "     let g:ycm_collect_identifiers_from_tags_files=1
+    "     let g:ycm_seed_identifiers_with_syntax=1
+    "     let g:ycm_key_list_select_completion=['<TAB>', '<Down>']
+    "     let g:ycm_key_list_previous_completion=['<S-TAB>', '<Up>']
+    "     let g:ycm_semantic_triggers= {
+    "       \   'c' : ['->', '.'],
+    "       \   'objc' : ['->', '.'],
+    "       \   'ocaml' : ['.', '#'],
+    "       \   'cpp,objcpp' : ['->', '.', '::'],
+    "       \   'perl' : ['->'],
+    "       \   'php' : ['->', '::'],
+    "       \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+    "       \   'ruby' : ['.', '::'],
+    "       \   'lua' : ['.', ':'],
+    "       \   'erlang' : [':'],
+    "       \ }
+    " " }
 
     " Ctrlp
     " {
         let g:ctrlp_show_hidden = 0
     " }
 
-    " syntastic vim
-    " {
-        let g:syntastic_check_on_open=1
-        let g:syntastic_check_on_wq=1
-        " let b:syntastic_checkers = ['pylint']
-        let g:syntastic_python_checkers = ['python', 'pylint']
-        let g:syntastic_disabled_filetypes=['html' , 'php']
-        let g:syntastic_php_checkers=['php']
-            " the line below checks for styling and other unnecessary syntax checkers
-            " let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
-        let g:syntastic_error_symbol='✗'
-        let g:syntastic_warning_symbol='⚠'
-        "let g:syntastic_enable_highlighting=0
-        "let g:syntastic_auto_loc_list=1
-    " }
+    " " syntastic vim
+    " " {
+    "     let g:syntastic_check_on_open=1
+    "     let g:syntastic_check_on_wq=1
+    "     " let b:syntastic_checkers = ['pylint']
+    "     let g:syntastic_python_checkers = ['python', 'pylint']
+    "     let g:syntastic_disabled_filetypes=['html' , 'php']
+    "     let g:syntastic_php_checkers=['php']
+    "         " the line below checks for styling and other unnecessary syntax checkers
+    "         " let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
+    "     let g:syntastic_error_symbol='✗'
+    "     let g:syntastic_warning_symbol='⚠'
+    "     "let g:syntastic_enable_highlighting=0
+    "     "let g:syntastic_auto_loc_list=1
+    " " }
     
     " vim-ariline
     " {
@@ -183,22 +185,17 @@
         set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
     " }
 
-    " vim-rails
-    " {
-        autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
-        autocmd FileType ruby,eruby let g:rubycomplete_rails=1
-        autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
-    " }
+    " " vim-rails
+    " " {
+    "     autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
+    "     autocmd FileType ruby,eruby let g:rubycomplete_rails=1
+    "     autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
+    " " }
 
-    " xmledit
-    " {
-        let xml_use_xhtml = 1
-    " }
-
-    " ragtag
-    " {
-        let g:ragtag_global_maps=1
-    " }
+    " " ragtag
+    " " {
+    "     let g:ragtag_global_maps=1
+    " " }
 
     " xmledit
     " {
@@ -208,15 +205,15 @@
         " let xml_use_xhtml=1
     " }
 
-    " vim-markdown
-    " {
-        let g:vim_markdown_folding_disabled=1
-    " }
+    " " vim-markdown
+    " " {
+    "     let g:vim_markdown_folding_disabled=1
+    " " }
 
-    " vim-coffee-script
-    " {
-        au BufWritePost *.coffee silent CoffeeMake!
-    " }
+    " " vim-coffee-script
+    " " {
+    "     au BufWritePost *.coffee silent CoffeeMake!
+    " " }
 
     " vim-nerd-tree-tabs
     " {
@@ -248,16 +245,22 @@
         " autocmd FileType * nested :call tagbar#autoopen(0)
     " }
 
-    " jedi-vim
+    " " jedi-vim
+    " " {
+    "     let g:jedi#autocompletion_command = "<C-Space>"
+    "     let g:jedi#popup_on_dot = 0
+    "     let g:jedi#popup_select_first=0
+    " " }
+
+    " " tomorrow-night
     " {
-        let g:jedi#autocompletion_command = "<C-Space>"
-        let g:jedi#popup_on_dot = 0
-        let g:jedi#popup_select_first=0
+        colorscheme tomorrow-night
     " }
 
     " vim-colors-solarized
     " {
         let &t_Co=256
+        let g:solarized_termtrans=2
         let g:solarized_termcolors=256
         set background=dark
         colorscheme solarized
@@ -267,113 +270,112 @@
             set background=dark
         endif
         syntax enable                   " syntax highlighing
-        let g:solarized_termtrans=1
         let g:solarized_contrast="high"
         let g:solarized_visibility="high"
     " }
     
-    " newcomplcache
-    " {
+    " " newcomplcache
+    " " {
 
-        let g:neocomplcache_force_overwrite_completefunc = 1
-        if !exists('g:neocomplcache_omni_functions')
-            let g:neocomplcache_omni_functions = {}
-        endif
-        if !exists('g:neocomplcache_force_omni_patterns')
-            let g:neocomplcache_force_omni_patterns = {}
-        endif
-        let g:neocomplcache_force_overwrite_completefunc = 1
-        let g:neocomplcache_force_omni_patterns['python'] = '[^. \t]\.\w*'
-        set ofu=syntaxcomplete#Complete
-        au FileType python set omnifunc=pythoncomplete#Complete
-        au FileType python let b:did_ftplugin = 1
+    "     let g:neocomplcache_force_overwrite_completefunc = 1
+    "     if !exists('g:neocomplcache_omni_functions')
+    "         let g:neocomplcache_omni_functions = {}
+    "     endif
+    "     if !exists('g:neocomplcache_force_omni_patterns')
+    "         let g:neocomplcache_force_omni_patterns = {}
+    "     endif
+    "     let g:neocomplcache_force_overwrite_completefunc = 1
+    "     let g:neocomplcache_force_omni_patterns['python'] = '[^. \t]\.\w*'
+    "     set ofu=syntaxcomplete#Complete
+    "     au FileType python set omnifunc=pythoncomplete#Complete
+    "     au FileType python let b:did_ftplugin = 1
 
-        " Vim-jedi settings
-        let g:jedi#popup_on_dot = 0
-        " this plugin might have problem while moving inside markdown in insert mode
-        let g:neocomplcache_enable_auto_select = 0  " select first candidate auto 
-        let g:neocomplcache_enable_at_startup = 1
-        " Use smartcase.
-        let g:neocomplcache_enable_smart_case = 1
-        " Set minimum syntax keyword length.
-        let g:neocomplcache_min_syntax_length = 1
-        let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-        " Define dictionary.
-        let g:neocomplcache_dictionary_filetype_lists = {
-            \ 'default' : '',
-            \ 'vimshell' : $HOME.'/.vimshell_hist',
-            \ 'scheme' : $HOME.'/.gosh_completions'
-                \ }
-        " Define keyword.
-        if !exists('g:neocomplcache_keyword_patterns')
-            let g:neocomplcache_keyword_patterns = {}
-        endif
-        let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+    "     " Vim-jedi settings
+    "     let g:jedi#popup_on_dot = 0
+    "     " this plugin might have problem while moving inside markdown in insert mode
+    "     let g:neocomplcache_enable_auto_select = 0  " select first candidate auto 
+    "     let g:neocomplcache_enable_at_startup = 1
+    "     " Use smartcase.
+    "     let g:neocomplcache_enable_smart_case = 1
+    "     " Set minimum syntax keyword length.
+    "     let g:neocomplcache_min_syntax_length = 1
+    "     let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+    "     " Define dictionary.
+    "     let g:neocomplcache_dictionary_filetype_lists = {
+    "         \ 'default' : '',
+    "         \ 'vimshell' : $HOME.'/.vimshell_hist',
+    "         \ 'scheme' : $HOME.'/.gosh_completions'
+    "             \ }
+    "     " Define keyword.
+    "     if !exists('g:neocomplcache_keyword_patterns')
+    "         let g:neocomplcache_keyword_patterns = {}
+    "     endif
+    "     let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-        " Use camel case completion.
-            "let g:neocomplcache_enable_camel_case_completion = 1
-        " Use underbar completion.
-            "let g:neocomplcache_enable_underbar_completion = 1
+    "     " Use camel case completion.
+    "         "let g:neocomplcache_enable_camel_case_completion = 1
+    "     " Use underbar completion.
+    "         "let g:neocomplcache_enable_underbar_completion = 1
 
-        " Plugin key-mappings.
-        inoremap <expr><C-g>     neocomplcache#undo_completion()
-        inoremap <expr><C-l>     neocomplcache#complete_common_string()
-        " Recommended key-mappings.
-        " <CR>: close popup and save indent.
-        inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-        function! s:my_cr_function()
-        return neocomplcache#smart_close_popup() . "\<CR>"
-        " For no inserting <CR> key.
-        "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-        endfunction
-        " <TAB>: completion.
-        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-        " <C-h>, <BS>: close popup and delete backword char.
-        " inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-        " inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-        inoremap <expr><C-y>  neocomplcache#close_popup()
-        inoremap <expr><C-e>  neocomplcache#cancel_popup()
-        
-        " Enable heavy omni completion.
-        if !exists('g:neocomplcache_omni_patterns')
-            let g:neocomplcache_omni_patterns = {}
-        endif
-        let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-        let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-        let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    "     " Plugin key-mappings.
+    "     inoremap <expr><C-g>     neocomplcache#undo_completion()
+    "     inoremap <expr><C-l>     neocomplcache#complete_common_string()
+    "     " Recommended key-mappings.
+    "     " <CR>: close popup and save indent.
+    "     inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    "     function! s:my_cr_function()
+    "     return neocomplcache#smart_close_popup() . "\<CR>"
+    "     " For no inserting <CR> key.
+    "     "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+    "     endfunction
+    "     " <TAB>: completion.
+    "     inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    "     " <C-h>, <BS>: close popup and delete backword char.
+    "     " inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+    "     " inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+    "     inoremap <expr><C-y>  neocomplcache#close_popup()
+    "     inoremap <expr><C-e>  neocomplcache#cancel_popup()
+    "     
+    "     " Enable heavy omni completion.
+    "     if !exists('g:neocomplcache_omni_patterns')
+    "         let g:neocomplcache_omni_patterns = {}
+    "     endif
+    "     let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+    "     let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+    "     let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-        " For perlomni.vim setting.
-        " https://github.com/c9s/perlomni.vim
-        let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-    " }
+    "     " For perlomni.vim setting.
+    "     " https://github.com/c9s/perlomni.vim
+    "     let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+    " " }
 
-    " neosnippet.vim
-    " {
-        " Plugin key-mappings.
-        imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-        smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-        xmap <C-k>     <Plug>(neosnippet_expand_target)
+    " " neosnippet.vim
+    " " {
+    "     " Plugin key-mappings.
+    "     imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    "     smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    "     xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-        " SuperTab like snippets behavior.
-            " imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-            "     \ "\<Plug>(neosnippet_expand_or_jump)"
-            "     \: pumvisible() ? "\<C-n>" : "\<TAB>"
-            " smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-            "     \ "\<Plug>(neosnippet_expand_or_jump)"
-            "     \: "\<TAB>"
+    "     " SuperTab like snippets behavior.
+    "         " imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    "         "     \ "\<Plug>(neosnippet_expand_or_jump)"
+    "         "     \: pumvisible() ? "\<C-n>" : "\<TAB>"
+    "         " smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    "         "     \ "\<Plug>(neosnippet_expand_or_jump)"
+    "         "     \: "\<TAB>"
 
-        " For snippet_complete marker.
-        if has('conceal')
-            set conceallevel=2 concealcursor=i
-        endif
+    "     " For snippet_complete marker.
+    "     if has('conceal')
+    "         set conceallevel=2 concealcursor=i
+    "     endif
 
-        " Enable snipMate compatibility feature.
-        let g:neosnippet#enable_snipmate_compatibility = 1
-        let g:neosnippet#enable_preview = 1
+    "     " Enable snipMate compatibility feature.
+    "     let g:neosnippet#enable_snipmate_compatibility = 1
+    "     let g:neosnippet#enable_preview = 1
 
-        " Tell Neosnippet about the other snippets
-        let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-    " }
+    "     " Tell Neosnippet about the other snippets
+    "     let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+    " " }
 
     " vim-autoclose
     " {
@@ -394,40 +396,40 @@
         let g:multi_cursor_exit_from_insert_mode=1
     " }
 
-    " PIV {
-        let g:DisableAutoPHPFolding = 1
-        let g:PIVAutoClose = 0
-    " }
+    " " PIV {
+    "     let g:DisableAutoPHPFolding = 1
+    "     let g:PIVAutoClose = 0
+    " " }
 
-    " vim-json
-    " {
-        let g:vim_json_syntax_conceal = 1
-    " }
+    " " vim-json
+    " " {
+    "     let g:vim_json_syntax_conceal = 1
+    " " }
 
-    " vim-less
-    " {
-        nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
-    " }
+    " " vim-less
+    " " {
+    "     nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
+    " " }
     
-    " vim-ruby-refactoring
-    " {
-        let g:ruby_refactoring_map_keys = 1
-    " }
+    " " vim-ruby-refactoring
+    " " {
+    "     let g:ruby_refactoring_map_keys = 1
+    " " }
 
-    " emmet-vim
-    " {
-        let g:user_emmet_mode='a'    "enable all function in all mode.
-    " }
+    " " emmet-vim
+    " " {
+    "     let g:user_emmet_mode='a'    "enable all function in all mode.
+    " " }
 
     " gitv                  " https://github.com/gregsexton/gitv
     " {
         " set lazyredraw
     " }
 
-    " JSON.vim
-    " {
-        au! BufRead,BufNewFile *.json set filetype=json 
-    " }
+    " " JSON.vim
+    " " {
+    "     au! BufRead,BufNewFile *.json set filetype=json 
+    " " }
 
     " vim-repeat
     " {
@@ -439,7 +441,9 @@
     " {
         let g:indent_guides_enable_on_vim_startup=1
         let g:indentLine_color_term=239
-        let g:indentLine_char='|'
+        let g:indentLine_char='┆'
+        " let g:indentLine_char='¦'
+        " let g:indentLine_char='|'
     " }
 
     " NERDTree
