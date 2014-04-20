@@ -4,10 +4,29 @@
 " {
     syntax on                   " syntax highlighing
 
-    "Colors are defined in /usr/share/vim/vim73/colors/
-        "color elflord
-        "color torte
-        color ron
+    "Colors
+    " {
+        " Make listchars (much) more noticable.
+        au ColorScheme * hi SpecialKey ctermfg=7 ctermbg=1
+
+        " A nice, minimalistic tabline.
+        au ColorScheme * hi TabLine cterm=bold,underline ctermfg=8 ctermbg=none
+        au ColorScheme * hi TabLineSel cterm=bold ctermfg=0 ctermbg=7
+        au ColorScheme * hi TabLineFill cterm=bold
+
+        " Black ColorColumn to not catch the eye more than is necessary
+        au ColorScheme * hi ColorColumn ctermbg=0
+
+        " Makes the current line stand out with bold and in the numberline
+        au ColorScheme * hi CursorLine cterm=bold,underline
+        au ColorScheme * hi LineNr cterm=bold ctermfg=0 ctermbg=none
+
+        " Match the Sign column to the number column
+        au ColorScheme * hi SignColumn cterm=bold ctermfg=0 ctermbg=none
+
+        syntax enable
+        colorscheme desert
+    " }
 
     filetype on                 " try to detect filetypes
     filetype plugin indent on   " enable loading indent file for filetype
@@ -17,11 +36,13 @@
     " set hidden                  " hide the inactive buffers
     set wildmenu                " Menu completion in command mode on <Tab>
     set wildmode=full           " <Tab> cycles between all matching choices.
-    
+
+    set visualbell
     set noerrorbells            " don't bell or blink
     set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
 
     " Ignore these files when completing
+    "  {
         set wildignore+=.git,*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
         set wildignore+=eggs/**
         set wildignore+=*.egg-info/**
@@ -30,39 +51,44 @@
         set wildignore+=*.luac                           " Lua byte code
         set wildignore+=*.jar                            " java archives
         set wildignore+=*.stats                          " Pylint stats
+    " }
 
     " Disable the colorcolumn when switching modes.  Make sure this is the
     " " first autocmd for the filetype here
     "autocmd FileType * setlocal colorcolumn=0
 
     " relative numbers and absolute numbers
-    " {
         set number            " line numbers
         autocmd FocusGained * :set number
         autocmd FocusLost * :set number
         autocmd InsertEnter * :set number
         autocmd InsertLeave * :set relativenumber
         autocmd CursorMoved * :set relativenumber
-    " }
 
     " For multi-byte character support (CJK support, for example):
         "set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
 
     " Insert completion
-    " don't select first item, follow typing in autocomplete
-        set completeopt=menu,menuone,longest,preview
-        set pumheight=6             " Keep a small completion window
-        " set completeopt=menuone,longest,preview
+    " {
+        " don't select first item, follow typing in autocomplete
+            set completeopt=menu,menuone,longest,preview
+            set pumheight=6             " Keep a small completion window
+            " set completeopt=menuone,longest,preview
+    " }
 
     " Moving Around/Editing
+    " {
         " set fillchars+=vert:│       " better looking for windows separator "
         set cursorline              " have a line indicate the cursor location
         set ruler                   " show the cursor position all the time
         set nostartofline           " Avoid moving cursor to BOL when jumping around
+        set cryptmethod=blowfish    "cm: use (much) stronger blowfish encryption
         set virtualedit=block       " Let cursor move past the last char in <C-v> mode
         set scrolloff=5            " Keep 5 context lines above and below the cursor
         set backspace=indent,eol,start " Allow backspacing autoindent, EOL, and BOL
         set showmatch               " Briefly jump to a paren once it's balanced
+        set nobackup "bk: does not write a persistent backup file of an edited file
+        set writebackup "wb: does keep a backup file while editing a file
         " set nowrap                  " don't wrap text
         " set linebreak               " don't wrap textin the middle of a word
         set autoindent              " always set autoindenting on
@@ -87,12 +113,16 @@
                                     "           after hitting <Enter> in Insert mode. 
                                     " t         Auto-wrap text using textwidth (does not apply
                                     "           to comments)
+    " }
 
     " close preview window automatically when we move around
+    " {
         autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
         autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+    " }
 
     " Reading/Writing
+    " {
         " set noautowrite             " Never write a file unless I request it.
         " set noautowriteall          " NEVER.
         " set noautoread              " Don't automatically re-read changed files.
@@ -100,8 +130,10 @@
         " set modelines=5             " they must be within the first or last 5 lines.
         set ffs=unix,dos,mac        " Try recognizing dos, unix, and mac line endings.
         " set virtualedit=all             " to edit where there is no actual character
+    " }
 
     " Messages, Info, Status
+    " {
         " set go-=T                   " hide the toolbar
         " set go-=m                   " hide the menu
         " set go+=rRlLbh              " show all the scrollbars
@@ -115,31 +147,40 @@
         set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
         set ruler                   " Show some info, even without statuslines.
         set laststatus=2            " Always show statusline, even if only 1 window.
+    " }
 
     " Show hidden chars
-    " displays tabs with :set list & displays when a line runs off-screen
+    " {
+        " displays tabs with :set list & displays when a line runs off-screen
         " set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
         set list listchars=tab:»-,trail:·,extends:»,precedes:«
         " set listchars=tab:→\ ,eol:↵,trail:·,extends:↷,precedes:↶
         "set list
+    " }
 
     " Searching and Patterns
-        " set ignorecase              " Default to using case insensitive searches,
-        " set smartcase               " unless uppercase letters are used in the regex.
+    " {
+        set ignorecase              " Default to using case insensitive searches,
+        set smartcase               " unless uppercase letters are used in the regex.
         set smarttab                " Handle tabs more intelligently 
         set hlsearch                " Highlight searches by default.
-    set incsearch               " Incrementally search while typing a /regex
+        set incsearch               " Incrementally search while typing a /regex
+        " Searches the current directory as well as subdirectories with commands like :find, :grep, etc.
+        " set path=.,**
+    " }
 
     """" Display
         if has("gui_running")
             " Remove menu bar
             set guioptions-=m
-            
+            autocmd GUIEnter * set vb t_vb=
+
             " Remove toolbar
             set guioptions-=T
         endif
 
-    " set lazyredraw              " only redraws if it is needed
+    set nojoinspaces "nojs: prevents inserting two spaces after punctuation on a join (it's not 1990 anymore)
+    set lazyredraw              " only redraws if it is needed
     set ttyfast                 " better screen redraw
     set splitright              " always split right
     set splitbelow              " always split below
@@ -150,6 +191,7 @@
     "     set clipboard=unnamed
     " endif
 
+    " set pastetoggle=<F9> "pt: useful so auto-indenting doesn't mess up code when pasting
     set clipboard=unnamed       "copies the yank lines in clipboard
     set nocompatible
     set copyindent              " copy the previous indentation on autoindenting
@@ -161,24 +203,29 @@
     set mouse=a                 " Vim now has mouse support
     set mousehide               " Hide the mouse cursor while typing "
     set history=1000            " keep 1000 lines of command line history
-    " set undofile
+    " set undofile "udf: persist the undo tree to a file; dir below will not be auto-created
     " set undoreload=1000
+    " set undodir=$HOME/.vim/undodir,.
     set autoread
     set wildmode=list:full
     set wildmode=list:longest,full
 
     " resizing vim window for scrolling
+    " {
         au VimEnter * if line('$') > &lines | set go+=r | else | set go-=r | endif
         au VimResized * if line('$') > &lines | set go+=r | else | set go-=r | endif
+    " }
 
     " highlighting colour of tabs
+    " {
         " hi TabLine ctermfg=white ctermbg=white cterm=NONE
-        hi TabLineFill ctermfg=grey ctermbg=white cterm=NONE
+        " hi TabLineFill ctermfg=grey ctermbg=white cterm=NONE
         " hi TabLineSel ctermfg=black ctermbg=green cterm=NONE
-        hi TabLineSel ctermfg=green ctermbg=black term=bold
+        " hi TabLineSel ctermfg=green ctermbg=black term=bold
         " hi TabLineSel term=bold cterm=bold
         " hi TabLineFill term=reverse cterm=reverse 
         " hi TabLine term=underline cterm=underline ctermfg=15 ctermbg=242
+    " }
 
     " Backups
     " {
@@ -194,8 +241,8 @@
         " silent! call MakeDirIfNoExists(&backupdir)
         " silent! call MakeDirIfNoExists(&directory)
     " }
-    
-    " Ok, a vim for men, get off the cursor keys
+
+    " get off the cursor keys
     " {
         " nnoremap <up> <nop>
         " nnoremap <down> <nop>
