@@ -28,16 +28,20 @@ fi
 # ====================================================================
 
 export MARKPATH=$HOME/.marks
-function jump { 
+
+jump() { 
     cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
 }
-function mark { 
+
+mark() { 
     mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
 }
-function unmark { 
+
+unmark() { 
     rm -i $MARKPATH/$1 
 }
-function marks {
+
+marks() {
     ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/ -/g' && echo
 }
 
@@ -90,19 +94,4 @@ psgrep() {
 killit() {
     # Kills any process that matches a regexp passed to it
     ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
-}
-
-exip () {
-    # gather external ip address
-    echo -n "Current External IP: "
-    curl -s -m 5 http://myip.dk | grep "ha4" | sed -e 's/.*ha4">//g' -e 's/<\/span>.*//g'
-}
-
-ips () {
-    # determine local IP address
-    ifconfig | grep "inet " | awk '{ print $2 }'
-}
-
-shell () {
-  ps | grep `echo $$` | awk '{ print $4 }'
 }
