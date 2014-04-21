@@ -7,6 +7,7 @@
     "Colors
     " {
         " Make listchars (much) more noticable.
+        set t_Co=256
         au ColorScheme * hi SpecialKey ctermfg=7 ctermbg=1
 
         " A nice, minimalistic tabline.
@@ -18,7 +19,7 @@
         au ColorScheme * hi ColorColumn ctermbg=0
 
         " Makes the current line stand out with bold and in the numberline
-        au ColorScheme * hi CursorLine cterm=bold,underline
+        au ColorScheme * hi CursorLine cterm=bold ctermbg=233
         au ColorScheme * hi LineNr cterm=bold ctermfg=0 ctermbg=none
 
         " Match the Sign column to the number column

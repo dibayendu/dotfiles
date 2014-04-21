@@ -12,19 +12,28 @@
 "   https://github.com/spf13/spf13-vim
 
 " environment variables in vim
-    source ~/dibayendu/repositories/dotfiles/vim/vimrc.environment
+    source ~/projects/environment/dotfiles/vim/vimrc.environment
 
 " functions in vim
-    source ~/dibayendu/repositories/dotfiles/vim/vimrc.functions
+    source ~/projects/environment/dotfiles/vim/vimrc.functions
+
+" plugins setup using neobundle
+    source ~/projects/environment/dotfiles/vim/vimrc.plugins
 
 " basic settings and inbuilt vim extensions
-    source ~/dibayendu/repositories/dotfiles/vim/vimrc.basic
+    source ~/projects/environment/dotfiles/vim/vimrc.basic
+
+" plugins setup using neobundle
+    source ~/projects/environment/dotfiles/vim/vimrc.plugins_settings
+
+" plugins key mappings and shortcuts
+    source ~/projects/environment/dotfiles/vim/vimrc.plugins_mappings
 
 " external plugins installed
-    source ~/dibayendu/repositories/dotfiles/vim/vimrc.bundles
-    source ~/dibayendu/repositories/dotfiles/vim/vimrc.external_plugins
+"    source ~/dibayendu/repositories/dotfiles/vim/vimrc.bundles
+"    source ~/dibayendu/repositories/dotfiles/vim/vimrc.external_plugins
 
 " key mappings and shortcuts
-    source ~/dibayendu/repositories/dotfiles/vim/vimrc.key_mappings
+"    source ~/dibayendu/repositories/dotfiles/vim/vimrc.key_mappings
 
 

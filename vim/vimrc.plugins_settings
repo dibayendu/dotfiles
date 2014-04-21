@@ -1,0 +1,79 @@
+" vim-colors-solarized
+" {
+    let &t_Co=256
+    let g:solarized_termtrans=2
+    let g:solarized_termcolors=256
+    set background=dark
+    colorscheme solarized
+    if has('gui_running')
+        set background=light
+    else
+        set background=dark
+    endif
+    syntax enable                   " syntax highlighing
+    let g:solarized_contrast="high"
+    let g:solarized_visibility="high"
+" }
+
+" vim-ariline
+" {
+    let g:airline#extensions#syntastic#enabled = 1
+    let g:airline#extensions#tagbar#enabled = 1
+    let g:airline#extensions#bufferline#enabled = 0
+    let g:airline#extensions#tabline#show_buffers = 0
+    let g:airline#extensions#tabline#enabled = 0
+    let g:airline#extensions#tabline#tab_nr_type = 1
+    let g:airline_inactive_collapse=1
+    " old vim-powerline symbols
+        let g:airline_left_sep = '⮀'
+        let g:airline_left_alt_sep = '⮁'
+        let g:airline_right_sep = '⮂'
+        let g:airline_right_alt_sep = '⮃'
+        let g:airline#extensions#branch#symbol = '⭠'
+        let g:airline#extensions#readonly#symbol = '⭤'
+        let g:airline_linecolumn_prefix = '⭡'
+" }
+
+" indentLine plugin
+" {
+    let g:indent_guides_enable_on_vim_startup=1
+    let g:indentLine_color_term=239
+    let g:indentLine_char='┆' " '¦' '|'
+" }
+
+" tagbar
+" {
+    let g:tagbar_left=0
+    " let g:tagbar_width=30
+    " let g:tagbar_autoclose=1
+    " let g:tagbar_autofocus=1
+    let g:tagbar_sort=0
+    let g:tagbar_indent=1
+    let g:tagbar_show_visibility=1
+    let g:tagbar_iconchars=['▶', '▼']
+    let g:tagbar_autoshowtag=0
+    " uncomment the line below to open tagbar automatically
+    " autocmd BufEnter * nested :call tagbar#autoopen(0)
+    " autocmd VimEnter * nested :call tagbar#autoopen(1)
+    " autocmd FileType * nested :call tagbar#autoopen(0)
+" }
+
+" NERDTree
+"{
+    "ingoring python compiled files to show in tree
+    let NERDTreeIgnore=['\.pyc$']
+"}
+
+" vim-nerd-tree-tabs
+" {
+    let g:nerdtree_tabs_open_on_console_startup=1
+    let g:nerdtree_tabs_no_startup_for_diff=1
+    let g:nerdtree_tabs_smart_startup_focus=2
+    let g:nerdtree_tabs_open_on_new_tab=1
+    let g:nerdtree_tabs_meaningful_tab_names=1
+    let g:nerdtree_tabs_autoclose=1
+    let g:nerdtree_tabs_synchronize_view=1
+    let g:nerdtree_tabs_synchronize_focus=1
+    let g:nerdtree_tabs_focus_on_files=1
+" }
+

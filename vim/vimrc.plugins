@@ -1,0 +1,50 @@
+" Setup neo bundle first
+" {
+    set nocompatible " No to the total compatibility with the ancient vi
+
+    " NeoBundle auto-installation and setup {{{
+
+    " Auto installing NeoBundle
+    let iCanHazNeoBundle=1
+    let neobundle_readme=expand($HOME.'/.vim/bundle/neobundle.vim/README.md')
+    if !filereadable(neobundle_readme)
+        echo "Installing NeoBundle.."
+        echo ""
+        silent !mkdir -p $HOME/.vim/bundle
+        silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+        let iCanHazNeoBundle=0
+    endif
+
+
+    " Call NeoBundle
+    if has('vim_starting')
+        set rtp+=$HOME/.vim/bundle/neobundle.vim/
+    endif
+    call neobundle#rc(expand($HOME.'/.vim/bundle/'))
+
+    " is better if NeoBundle rules NeoBundle (needed!)
+    NeoBundle 'Shougo/neobundle.vim'
+" }
+
+" Vimproc to asynchronously run commands (NeoBundle, Unite)
+" {
+    NeoBundle 'Shougo/vimproc', {
+        \ 'build' : {
+        \     'windows' : 'make -f make_mingw32.mak',
+        \     'cygwin' : 'make -f make_cygwin.mak',
+        \     'mac' : 'make -f make_mac.mak',
+        \     'unix' : 'make -f make_unix.mak',
+        \    },
+        \ }
+
+" }
+
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
