@@ -43,13 +43,4 @@ NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'mhinz/vim-signify'
-NeoBundle 'tpope/vim-fugitive'
-
 NeoBundle 'Lokaltog/vim-easymotion'
-
-NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {'commands': 'GundoToggle'}}
-NeoBundleLazy 'majutsushi/tagbar', { 'autoload' : {'commands': 'Tagbar'}}
-NeoBundleLazy 'mileszs/ack.vim', { 'autoload' : {'commands': 'Ack'}}

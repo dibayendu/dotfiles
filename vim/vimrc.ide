@@ -1,0 +1,43 @@
+
+"
+"                       __   _(_)_ __ ___  _ __ ___
+"                       \ \ / / | '_ ` _ \| '__/ __|
+"                        \ V /| | | | | | | | | (__
+"                       (_)_/ |_|_| |_| |_|_|  \___|
+"
+" Author: Dibayendu Dey
+" Source: http://github.com/dibayendu/dotfiles/blob/master/vim/.vimrc
+"
+" References: 
+"   http://github.com/joedicastro/dotfiles
+"   https://github.com/spf13/spf13-vim
+
+" environment variables in vim
+    source ~/projects/environment/dotfiles/vim/vimrc.environment
+
+" functions in vim
+    source ~/projects/environment/dotfiles/vim/vimrc.functions
+
+" plugins setup using neobundle
+    source ~/projects/environment/dotfiles/vim/vimrc.plugins
+    source ~/projects/environment/dotfiles/vim/vimrc.ide_plugins
+
+" basic settings and inbuilt vim extensions
+    source ~/projects/environment/dotfiles/vim/vimrc.basic
+
+" plugins setup using neobundle
+    source ~/projects/environment/dotfiles/vim/vimrc.plugins_settings
+    source ~/projects/environment/dotfiles/vim/vimrc.ide_plugins_settings
+
+" plugins key mappings and shortcuts
+    source ~/projects/environment/dotfiles/vim/vimrc.plugins_mappings
+    source ~/projects/environment/dotfiles/vim/vimrc.ide_plugins_mappings
+
+" external plugins installed
+"    source ~/dibayendu/repositories/dotfiles/vim/vimrc.bundles
+"    source ~/dibayendu/repositories/dotfiles/vim/vimrc.external_plugins
+
+" key mappings and shortcuts
+"    source ~/dibayendu/repositories/dotfiles/vim/vimrc.key_mappings
+
+
