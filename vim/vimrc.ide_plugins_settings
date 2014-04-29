@@ -48,3 +48,17 @@
 " {
     let g:ctrlp_show_hidden = 0
 " }
+
+" vim-multiple-cursors
+" {
+    let g:multi_cursor_use_default_mapping=0
+    let g:multi_cursor_exit_from_visual_mode=1
+    let g:multi_cursor_exit_from_insert_mode=1
+" }
+
+" vim-autoclose
+" {
+    let g:AutoClosePairs = "() [] {} \" \'"
+    let g:AutoClosePairs_add = "<> |"
+    let g:AutoCloseProtectedRegions = ["Comment", "String", "Character"]
+" }

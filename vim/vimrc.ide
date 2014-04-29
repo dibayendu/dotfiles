@@ -15,6 +15,9 @@
 " environment variables in vim
     source ~/projects/environment/dotfiles/vim/vimrc.environment
 
+" basic mappings and shortcuts
+    source ~/projects/environment/dotfiles/vim/vimrc.mappings
+
 " functions in vim
     source ~/projects/environment/dotfiles/vim/vimrc.functions
 
@@ -32,6 +35,9 @@
 " plugins key mappings and shortcuts
     source ~/projects/environment/dotfiles/vim/vimrc.plugins_mappings
     source ~/projects/environment/dotfiles/vim/vimrc.ide_plugins_mappings
+
+" ide functions in vim
+    source ~/projects/environment/dotfiles/vim/vimrc.ide_plugins_functions
 
 " external plugins installed
 "    source ~/dibayendu/repositories/dotfiles/vim/vimrc.bundles

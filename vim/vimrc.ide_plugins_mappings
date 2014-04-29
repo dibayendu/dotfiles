@@ -3,3 +3,18 @@
     let g:ctrlp_map='<c-p>'
     let g:ctrlp_cmd='CtrlP'
 " }
+
+" NERDTreeTabs
+" {
+    map <Leader>n <plug>NERDTreeTabsToggle<CR>
+    "nmap <C-n> <esc>:NERDTreeTabsToggle<CR>
+    "imap <C-n> <esc>:NERDTreeTabsToggle<CR>
+" }
+
+" vim-multiple-cursors
+" {
+    let g:multi_cursor_next_key='<C-i>'
+    let g:multi_cursor_prev_key='<C-x>'
+    let g:multi_cursor_skip_key='<C-m>'
+    let g:multi_cursor_quit_key='<Esc>'
+" }

@@ -1,0 +1,29 @@
+" mapping the commands
+" {
+    command! Q q " Bind :Q to :q
+    command! Qa qa " all files in buffer
+    command! W w " Bind :W to :w
+    command! Wa wa " all files in buffer
+
+    nmap <C-S-]> <esc><esc>gt
+    nmap <C-S-[> <esc><esc>gT
+    nmap <C-1> <esc><esc>1gt
+    nmap <C-2> <esc><esc>2gt
+    nmap <C-3> <esc><esc>3gt
+    nmap <C-4> <esc><esc>4gt
+    nmap <C-5> <esc><esc>5gt
+    nmap <C-6> <esc><esc>6gt
+    nmap <C-7> <esc><esc>7gt
+    nmap <C-8> <esc><esc>8gt
+    nmap <C-9> <esc><esc>9gt
+    nmap <C-0> <esc><esc>:tablast<CR>
+" }
+
+" These mappings make j and k move down and up by display lines, while gj and
+" gk would move down and up by real lines
+" {
+    nnoremap k gk
+    nnoremap gk k
+    nnoremap j gj
+    nnoremap gj j
+" }

@@ -44,3 +44,5 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle "myusuf3/numbers.vim"
+NeoBundle 'bronson/vim-visual-star-search'
