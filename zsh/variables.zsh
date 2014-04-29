@@ -1,4 +1,7 @@
 export GREP_OPTIONS='--color=auto'
+export TERM='xterm-256color'
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 export HISTSIZE=1000         # Increases size of history
 export SAVEHIST=1000
