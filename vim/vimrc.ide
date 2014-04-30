@@ -38,12 +38,3 @@
 
 " ide functions in vim
     source ~/projects/environment/dotfiles/vim/vimrc.ide_plugins_functions
-
-" external plugins installed
-"    source ~/dibayendu/repositories/dotfiles/vim/vimrc.bundles
-"    source ~/dibayendu/repositories/dotfiles/vim/vimrc.external_plugins
-
-" key mappings and shortcuts
-"    source ~/dibayendu/repositories/dotfiles/vim/vimrc.key_mappings
-
-
