@@ -1,21 +1,30 @@
+NeoBundle 'vim-scripts/tlib'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'mhinz/vim-signify'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'tpope/vim-endwise'
-
-NeoBundleLazy 'vim-ruby/vim-ruby', { 'autoload' : { 'filetypes' : 'ruby'}}
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'jeetsukumaran/vim-buffergator'
 
 NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {'commands': 'GundoToggle'}}
 NeoBundleLazy 'majutsushi/tagbar', { 'autoload' : {'commands': 'Tagbar'}}
 NeoBundleLazy 'mileszs/ack.vim', { 'autoload' : {'commands': 'Ack'}}
-
+NeoBundleLazy 'joedicastro/dirdiff.vim', { 'autoload' : {'commands': 'DirDiff'}}
+NeoBundleLazy 'vim-scripts/mru.vim', { 'autoload' : {'commands': 'MRU'}}
 NeoBundleLazy 'godlygeek/tabular', { 'autoload' : {'commands': ['Tab', 'Tabularize']}}
+NeoBundleLazy 'gregsexton/gitv', { 'depends' : ['tpope/vim-fugitive'],
+            \ 'autoload' : {'commands' : 'Gitv'}}
+
 NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : { 'filetypes' : 'javascript'}}
 NeoBundleLazy 'briancollins/vim-jst', { 'autoload' : { 'filetypes' : ['ejs', 'javascript']}}
 NeoBundleLazy 'elzr/vim-json', {'filetypes' : 'json'}
+NeoBundleLazy 'vim-scripts/ruby-matchit', {'filetypes' : 'ruby'}
+NeoBundleLazy 'vim-ruby/vim-ruby', { 'autoload' : { 'filetypes' : 'ruby'}}
+NeoBundleLazy 'vimez/vim-tmux', { 'autoload' : { 'filetypes' : 'conf'}}
