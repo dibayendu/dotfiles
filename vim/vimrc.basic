@@ -80,6 +80,8 @@
     " Moving Around/Editing
     " {
         " set fillchars+=vert:│       " better looking for windows separator "
+        set binary                  " adding binary files without end of line
+        set noeol                   " no end of line of the file
         set cursorline              " have a line indicate the cursor location
         set ruler                   " show the cursor position all the time
         set nostartofline           " Avoid moving cursor to BOL when jumping around
@@ -102,6 +104,7 @@
         set matchpairs+=<:>         " show matching <> (html mainly) as well
         set foldmethod=indent       " allow us to fold on indents
         set foldlevel=99            " don't fold by default
+        set fileformats+=dos        " stop adding newline at the end of file
         set formatoptions=c,q,r,t   " This is a sequence of letters which describes how
                                     " automatic formatting is to be done.
                                     "
@@ -264,11 +267,16 @@
 " Inbuilt plugins
 " ===================================================================================
 " {
+    " highlight ejs files as js
+    au BufNewFile,BufRead *.ejs set filetype=javascript
+    au BufNewFile,BufRead *.js set filetype=javascript
     set omnifunc=syntaxcomplete#Complete
+
     " set completeopt-=preview
     autocmd FileType python set omnifunc=pythoncomplete#Complete
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType json set autoindent 
+    autocmd FileType json set foldmethod=syntax
     autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags

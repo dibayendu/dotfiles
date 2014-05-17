@@ -16,3 +16,6 @@ NeoBundleLazy 'majutsushi/tagbar', { 'autoload' : {'commands': 'Tagbar'}}
 NeoBundleLazy 'mileszs/ack.vim', { 'autoload' : {'commands': 'Ack'}}
 
 NeoBundleLazy 'godlygeek/tabular', { 'autoload' : {'commands': ['Tab', 'Tabularize']}}
+NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : { 'filetypes' : 'javascript'}}
+NeoBundleLazy 'briancollins/vim-jst', { 'autoload' : { 'filetypes' : ['ejs', 'javascript']}}
+NeoBundleLazy 'elzr/vim-json', {'filetypes' : 'json'}

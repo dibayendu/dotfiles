@@ -12,3 +12,4 @@ setopt appendhistory autocd nomatch autopushd pushdignoredups promptsubst
 # nvm - node version manager
 unsetopt correct_all
 setopt correct
+ulimit -n 1824
