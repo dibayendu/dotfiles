@@ -19,7 +19,7 @@
         au ColorScheme * hi ColorColumn ctermbg=0
 
         " Makes the current line stand out with bold and in the numberline
-        au ColorScheme * hi CursorLine cterm=bold ctermbg=234
+        au ColorScheme * hi CursorLine ctermbg=234
         au ColorScheme * hi LineNr cterm=bold ctermfg=0 ctermbg=none
 
         " Match the Sign column to the number column
