@@ -97,5 +97,25 @@
     endfunction
     nnoremap <leader>j :set opfunc=JoinItems<cr>g@
 
+    " Remove white space from the file
+    " {
+        " command! RemoveWhiteSpaces :%s/\s\+$//
+        " save it as well
+        command! RemoveWhiteSpaces :%s/\s\+$// | :w
+    " }
+
+    " Convert tabs to 4 spaces
+    " {
+        " command! TabsTo4Spaces :%s/\t/    /g
+        " save it as well
+        command! TabsTo4Spaces :%s/\t/    /g | :w
+    " }
+
+    " Convert tabs to 2 spaces
+    " {
+        " command! TabsTo2Spaces :%s/\t/  /g
+        " save it as well
+        command! TabsTo2Spaces :%s/\t/  /g | :w
+    " }
 " }
 
