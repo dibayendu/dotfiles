@@ -19,7 +19,7 @@
         au ColorScheme * hi ColorColumn ctermbg=0
 
         " Makes the current line stand out with bold and in the numberline
-        au ColorScheme * hi CursorLine cterm=bold ctermbg=234
+        au ColorScheme * hi CursorLine ctermbg=234
         au ColorScheme * hi LineNr cterm=bold ctermfg=0 ctermbg=none
 
         " Match the Sign column to the number column
@@ -213,6 +213,7 @@
     set autoread
     set wildmode=list:full
     set wildmode=list:longest,full
+    set colorcolumn=100         " draws a line to show where the file end should be
 
     " resizing vim window for scrolling
     " {
@@ -289,4 +290,5 @@
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2 et
     autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 
+    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 et
 " }
