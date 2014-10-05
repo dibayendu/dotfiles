@@ -13,6 +13,7 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'jeetsukumaran/vim-buffergator'
 NeoBundle 'mustache/vim-mustache-handlebars'
+NeoBundle 'tpope/vim-obsession'
 
 NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {'commands': 'GundoToggle'}}
 NeoBundleLazy 'majutsushi/tagbar', { 'autoload' : {'commands': 'Tagbar'}}
